@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Échoppe de Milo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Obtention_styles.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="header-left-column">
+            <a href="../Index.html" class="home-link">
+                <img src="../img/logo.png" alt="Logo Retour" class="logo-accueil">
+                <span>Retour</span>
+            </a>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span class="icon-light">☀️</span>
+                <span class="icon-dark">🌙</span>
+            </button>
+        </div>
+        <h1>L'Échoppe Mystique des Potions</h1>
+    </header>
+    <main>
+        <section id="infoSection">
+            <div class="info-box">
+                <h2>Comment fonctionne l'Échoppe ?</h2>
+                <p><strong>L'Échoppe de Milo</strong> est un lieu qui apparaît <strong>aléatoirement une fois par jour</strong>, avec Milo lui-même en tant que marchand. À chacune de ses apparitions, il expose sur son étal <strong>5 potions différentes</strong>, choisies selon un <strong>algorithme de distribution probabiliste</strong>.</p>
+                <p>Les potions proposées varient à chaque apparition, leur sélection reposant sur un système bien défini (lequel est présenté ci-dessous à titre informatif, afin d’illustrer son fonctionnement et non comme méthode d’obtention directe). Chaque rencontre avec Milo est donc <strong>unique</strong>, et les potions qu’il propose peuvent grandement fluctuer en fonction de leur <strong>rareté</strong> et de leur <strong>efficacité</strong>.</p>
+                <p><strong>Attention :</strong> l'accès à l'Échoppe fonctionne selon la règle du <strong>premier arrivé, premier servi</strong>. Une fois les potions vendues, elles ne réapparaissent plus avant la prochaine apparition de Milo.</p>
+            </div>            
+        </section>
+        <section id="potionShopSection">
+            <div class="cards-box">
+                <button id="refreshPotions" class="refresh-button">Actualiser les Potions</button>
+                <div id="potionShop" class="shop-container">
+                    </div>
+            </div>
+        </section>
+        <section>
+            <div class="info-box">
+                <h2>Taux d'apparition des Raretés</h2>
+                <ul>
+                    <li>Rare: 40% de chance d'apparaître</li>
+                    <li>Épique: 25% de chance d'apparaître</li>
+                    <li>Légendaire: 15% de chance d'apparaître</li>
+                    <li>Divine: 10% de chance d'apparaître</li>
+                    <li>Maudite: 7% de chance d'apparaître (une seule fois par session d'actualisation !)</li>
+                    <li>Angélique: 3% de chance d'apparaître (une seule fois par session d'actualisation !)</li>
+                </ul>
+                <p>Les potions "Maudites" et "Angélique" sont particulièrement rares et uniques : une fois qu'elles sont apparues dans une sélection, elles ne reviendront pas.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>🦊-- Wiki de potions L'échoppe de Milo --🦊</p>
+    </footer>
+    <script src="../js/Obtention_script.js" defer></script>
+    <script src="../js/Obtention_dark-mode.js" defer></script>
+</body>
+</html>

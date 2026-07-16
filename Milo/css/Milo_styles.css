@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&family=Abril+Fatface&display=swap');
+
+:root {
+    --bg-color: #f7f7f7;
+    --text-color: #333;
+    --link-color: #3b82f6;
+    --link-hover-color: #0d284a;
+
+    --header-bg: #1e3a5f;
+    --header-text-color: white;
+    --home-link-color: white;
+    --home-link-hover-color: #a0c4ff;
+    --footer-bg: #1e3a5f;
+    --footer-text-color: white;
+
+    --quote-box-bg: #e3eefc;
+    --quote-box-border: #3b82f6;
+    --quote-box-cite-color: #555;
+
+    --wiki-layout-gap: 30px;
+
+    --sidebar-bg: white;
+    --sidebar-shadow: rgba(0,0,0,0.1);
+    --sidebar-h2-color: #1e3a5f;
+    --sidebar-h2-border: #eee;
+    --sidebar-strong-color: #555;
+
+    --rarity-display-color: #FFD700;
+
+    --stats-box-bg: #e0f2fe;
+    --stats-box-shadow: rgba(0,0,0,0.1);
+    --stats-box-h3-color: #1e3a5f;
+    --stats-box-h3-border: #cceeff;
+
+    --main-content-bg: white;
+    --main-content-shadow: rgba(0,0,0,0.1);
+    --main-content-h2-color: #1e3a5f;
+    --main-content-h2-border: #ddd;
+    --main-content-h3-color: #3b82f6;
+    --main-content-h3-border: #e0e0e0;
+    --main-content-link-color: #3b82f6;
+
+    --toggle-bg-light: #ccc;
+    --toggle-bg-dark: #555;
+    --toggle-shadow-light: rgba(0,0,0,0.2);
+    --toggle-shadow-hover-light: rgba(0,0,0,0.3);
+    --toggle-shadow-dark: rgba(0,0,0,0.3);
+    --toggle-shadow-hover-dark: rgba(0,0,0,0.5);
+    --icon-light-color: #ffc107;
+    --icon-dark-color: #6c757d;
+    --icon-dark-color-active: #f8f9fa;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #8be0ff;
+    --link-hover-color: #a0c4ff;
+
+    --header-bg: #1a1a1a;
+    --header-text-color: #f0f0f0;
+    --home-link-color: #e0e0e0;
+    --home-link-hover-color: #9fe6b8;
+    --footer-bg: #1a1a1a;
+    --footer-text-color: #f0f0f0;
+
+    --quote-box-bg: #282828;
+    --quote-box-border: #6200ea;
+    --quote-box-cite-color: #bbb;
+
+    --sidebar-bg: #1f1f1f;
+    --sidebar-shadow: rgba(0,0,0,0.3);
+    --sidebar-h2-color: #9fe6b8;
+    --sidebar-h2-border: #333;
+    --sidebar-strong-color: #e0e0e0;
+
+    --stats-box-bg: #2a2a2a;
+    --stats-box-shadow: rgba(0,0,0,0.4);
+    --stats-box-h3-color: #9fe6b8;
+    --stats-box-h3-border: #444;
+
+    --main-content-bg: #1f1f1f;
+    --main-content-shadow: rgba(0,0,0,0.3);
+    --main-content-h2-color: #9fe6b8;
+    --main-content-h2-border: #333;
+    --main-content-h3-color: #8be0ff;
+    --main-content-h3-border: #444;
+    --main-content-link-color: #8be0ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+.page-header {
+    background: var(--header-bg);
+    color: var(--header-text-color);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.home-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--home-link-color);
+    font-size: 1.1em;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: var(--home-link-hover-color);
+}
+
+.logo-accueil {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.page-header h1 {
+    font-size: 2em;
+    color: var(--header-text-color);
+    margin: 0 auto;
+    flex-grow: 1;
+    text-align: center;
+    transition: color 0.5s ease;
+}
+
+#darkModeToggle {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    background-color: var(--toggle-bg-light);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px var(--toggle-shadow-light);
+    z-index: 1000;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+#darkModeToggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--toggle-shadow-hover-light);
+}
+
+#darkModeToggle .icon-light,
+#darkModeToggle .icon-dark {
+    font-size: 1.8em;
+    line-height: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#darkModeToggle .icon-light {
+    left: 10px;
+    color: var(--icon-light-color);
+    opacity: 1;
+}
+
+#darkModeToggle .icon-dark {
+    right: 10px;
+    color: var(--icon-dark-color);
+    opacity: 0;
+}
+
+body.dark-mode #darkModeToggle {
+    background-color: var(--toggle-bg-dark);
+    box-shadow: 0 2px 5px var(--toggle-shadow-dark);
+}
+
+body.dark-mode #darkModeToggle:hover {
+    box-shadow: 0 4px 10px var(--toggle-shadow-hover-dark);
+}
+
+body.dark-mode #darkModeToggle .icon-light {
+    transform: translateY(-50%) translateX(-30px);
+    opacity: 0;
+}
+
+body.dark-mode #darkModeToggle .icon-dark {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    color: var(--icon-dark-color-active);
+}
+
+
+main {
+    padding-bottom: 20px;
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text-color);
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.quote-box {
+    background: var(--quote-box-bg);
+    padding: 15px 30px;
+    border-left: 5px solid var(--quote-box-border);
+    margin: 20px auto;
+    width: 80%;
+    max-width: 900px;
+    font-style: italic;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.quote-box blockquote {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+}
+
+.quote-box cite {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: var(--quote-box-cite-color);
+    transition: color 0.5s ease;
+}
+
+.wiki-layout {
+    display: flex;
+    gap: var(--wiki-layout-gap);
+    padding: 20px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    background: var(--sidebar-bg);
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 6px var(--sidebar-shadow);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.sidebar h2 {
+    font-size: 1.6em;
+    color: var(--sidebar-h2-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--sidebar-h2-border);
+    padding-bottom: 10px;
+    text-align: center;
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.sidebar img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sidebar li {
+    margin: 8px 0;
+    font-size: 0.95em;
+}
+
+.sidebar strong {
+    color: var(--sidebar-strong-color);
+    transition: color 0.5s ease;
+}
+
+.rarity-display {
+    color: var(--rarity-display-color);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rarity-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.stats-box {
+    background: var(--stats-box-bg);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    box-shadow: inset 0 1px 3px var(--stats-box-shadow);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.stats-box h3 {
+    font-size: 1.3em;
+    color: var(--stats-box-h3-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--stats-box-h3-border);
+    padding-bottom: 5px;
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.stats-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.stats-box li {
+    margin: 5px 0;
+}
+
+.main-content {
+    flex: 1;
+    background: var(--main-content-bg);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px var(--main-content-shadow);
+    box-sizing: border-box;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.main-content h2 {
+    font-size: 1.8em;
+    margin-top: 25px;
+    border-bottom: 2px solid var(--main-content-h2-border);
+    padding-bottom: 8px;
+    color: var(--main-content-h2-color);
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.main-content h3 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    border-bottom: 1px dashed var(--main-content-h3-border);
+    padding-bottom: 5px;
+    color: var(--main-content-h3-color);
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.main-content p {
+    line-height: 1.7;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.main-content ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 1em;
+}
+
+.main-content li {
+    margin-bottom: 0.5em;
+}
+
+.main-content a {
+    color: var(--main-content-link-color);
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+.main-content a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .wiki-layout {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .sidebar {
+        width: 100%;
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .quote-box {
+        width: 95%;
+        padding: 15px 20px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5em;
+        text-align: left;
+    }
+
+    .page-header .home-link {
+        margin-right: 10px;
+    }
+
+    .logo-accueil {
+        width: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-header {
+        padding: 10px 15px;
+    }
+    .page-header h1 {
+        font-size: 1.3em;
+    }
+    .wiki-layout {
+        padding: 15px;
+        gap: 15px;
+    }
+    .sidebar, .main-content {
+        padding: 15px;
+    }
+    .quote-box {
+        padding: 10px 15px;
+        margin: 15px auto;
+    }
+}
+
+.pilt-box {
+    background: black;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    
+    display: inline-block;
+    max-width: 200px;
+    vertical-align: top;
+
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+body.dark-mode .pilt-box {
+    background: transparent;
+    box-shadow: none;
+}
+
+.pilt-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}

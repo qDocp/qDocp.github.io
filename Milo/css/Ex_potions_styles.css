@@ -1,0 +1,592 @@
+:root {
+    --bg-color: #f7f7f7;
+    --text-color: #333;
+    --page-header-bg: #1e3a5f;
+    --page-header-text: white;
+    --home-link-color: white;
+    --home-link-hover-color: #a0c4ff;
+    --main-content-bg: white;
+    --main-content-shadow: rgba(0, 0, 0, 0.1);
+    --article-h2-color: #1e3a5f;
+    --article-h2-border: #a0c4ff;
+    --section-border-bottom: #ddd;
+    --footer-bg: #1e3a5f;
+    --footer-text: white;
+    --info-section-bg: var(--main-content-bg);
+    --info-section-shadow: var(--main-content-shadow);
+    --info-box-bg: #e3eefc;
+    --info-box-border: #3b82f6;
+    --info-box-h2-color: #ffd700;
+    --info-box-li-before-color: #ffd700;
+    --color-card-bg: #34495e;
+    --color-border-card: #2c3e50;
+    --rarity-display-color: #EDEB4F;
+    --rarity-display-color-rare: #00ffff;
+    --color-epic: #9b59b6;
+    --color-legendary: #e67e22;
+    --color-divine: #f1c40f;
+    --color-cursed: #c0392b;
+    --color-angelic: #f39c12;
+    --rarity-icon-shadow: none;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --page-header-bg: #232946;
+    --page-header-text: #e0e0e0;
+    --home-link-color: #b8c0ff;
+    --home-link-hover-color: #c0caff;
+    --main-content-bg: #2d3047;
+    --main-content-shadow: rgba(0, 0, 0, 0.4);
+    --article-h2-color: #b8c0ff;
+    --article-h2-border: #5a608d;
+    --section-border-bottom: #4a4a6e;
+    --footer-bg: #232946;
+    --footer-text: #e0e0e0;
+    --info-section-bg: var(--main-content-bg);
+    --info-section-shadow: var(--main-content-shadow);
+    --info-box-bg: #2d3047;
+    --info-box-border: #5a608d;
+    --info-box-h2-color: var(--color-divine);
+    --info-box-li-before-color: var(--color-divine);
+    --color-card-bg: #1c2a38;
+    --color-border-card: #202e3b;
+    --rarity-display-color: #FFEA00;
+    --rarity-display-color-rare: #00e6e6;
+    --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.page-header {
+    background: var(--page-header-bg);
+    color: var(--page-header-text);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.header-left-column {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.home-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--home-link-color);
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: var(--home-link-hover-color);
+}
+
+.logo-accueil {
+    height: 40px;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .logo-accueil {
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+}
+
+.page-header h1 {
+    margin: 0 auto;
+    font-size: 2.5em;
+    text-align: center;
+    flex-grow: 1;
+    color: var(--page-header-text);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.dark-mode-toggle {
+    position: absolute;
+    top: 150px;
+    left: 20px; 
+    width: 70px;
+    height: 40px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.dark-mode-toggle .icon-light,
+.dark-mode-toggle .icon-dark {
+    font-size: 1.8em;
+    line-height: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dark-mode-toggle .icon-light {
+    left: 10px;
+    color: #ffc107;
+    opacity: 1;
+}
+
+.dark-mode-toggle .icon-dark {
+    right: 10px;
+    color: #6c757d;
+    opacity: 0;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #555;
+}
+
+body.dark-mode .dark-mode-toggle .icon-light {
+    transform: translateY(-50%) translateX(-30px);
+    opacity: 0;
+}
+
+body.dark-mode .dark-mode-toggle .icon-dark {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    color: #f8f9fa;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.main-content {
+    max-width: 900px;
+    margin: 2em auto;
+    padding: 2em;
+    background: var(--main-content-bg);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px var(--main-content-shadow);
+    flex-grow: 1;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.main-content section {
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+    border-bottom: 1px dashed var(--section-border-bottom);
+    transition: border-color 0.5s ease;
+}
+
+.main-content section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.main-content h2 {
+    color: var(--article-h2-color);
+    font-size: 2em;
+    margin-bottom: 0.8em;
+    border-left: 5px solid var(--article-h2-border);
+    padding-left: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    transition: color 0.5s ease, border-left-color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.main-content p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.main-content ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 1.5em;
+}
+
+.main-content ul li {
+    margin-bottom: 0.5em;
+}
+
+#potionShopSection {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 20px auto 40px auto;
+    background-color: var(--main-content-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--main-content-shadow);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    text-align: center;
+}
+
+#potionShopSection1 {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 20px auto 40px auto;
+    background-color: var(--main-content-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--main-content-shadow);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.cards-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.refresh-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.refresh-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-container {
+    perspective: 1000px;
+    width: 220px;
+    height: 300px;
+}
+
+.potion-card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-out;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--color-card-bg);
+    border: 2px solid var(--color-border-card);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+}
+
+.potion-card.flip-in {
+    transform: rotateY(0deg);
+}
+
+.potion-card h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6em;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+.rarity {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.rarity.rare { background-color: var(--rarity-display-color-rare); color: #003333; }
+.rarity.epic { background-color: var(--color-epic); color: white; }
+.rarity.legendary { background-color: var(--color-legendary); color: white; }
+.rarity.divine { background-color: var(--color-divine); color: #333; }
+.rarity.cursed { background-color: var(--color-cursed); color: white; }
+.rarity.angelic { background-color: var(--color-angelic); color: white; }
+
+.buy-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    width: 80%;
+    margin-top: auto;
+}
+
+.buy-button:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buy-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.potion-card.purchased-effect {
+    box-shadow: 0 0 20px 5px rgba(40, 167, 69, 0.8);
+    border-color: #28a745;
+}
+
+#infoSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 40px auto 20px auto;
+    background-color: var(--info-section-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--info-section-shadow);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.info-box {
+    background-color: var(--info-box-bg);
+    border: 2px solid var(--info-box-border);
+    border-radius: 10px;
+    padding: 25px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    text-align: left;
+    line-height: 1.6;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+}
+
+.info-box h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8em;
+    color: var(--info-box-h2-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.info-box li {
+    margin-bottom: 8px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.info-box li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--info-box-li-before-color);
+    font-size: 1.1em;
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1.5em 0;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+    .page-header h1 {
+        font-size: 2em;
+    }
+
+    #infoSection {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .info-box {
+        max-width: 48%;
+        min-width: unset;
+    }
+
+    #potionShopSection {
+        padding: 20px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1em;
+    }
+
+    .header-left-column {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1em;
+    }
+
+    .page-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .main-content {
+        margin: 1em;
+        padding: 1.5em;
+    }
+
+    .main-content h2 {
+        font-size: 1.8em;
+    }
+
+    .dark-mode-toggle {
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #infoSection {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .info-box {
+        width: 100%;
+        max-width: 90%;
+        flex: none;
+    }
+    
+    .shop-container {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 {
+        font-size: 1.8em;
+    }
+
+    .home-link span {
+        display: none;
+    }
+
+    .logo-accueil {
+        margin-right: 0;
+    }
+
+    .main-content {
+        padding: 1em;
+    }
+
+    .main-content h2 {
+        font-size: 1.5em;
+    }
+    
+    .potion-card {
+        width: 180px;
+        height: 250px;
+        padding: 15px;
+    }
+
+    .potion-card h2 {
+        font-size: 1.4em;
+    }
+
+    .rarity {
+        font-size: 0.8em;
+        padding: 3px 8px;
+    }
+
+    .buy-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
+
+.rarity-icon {
+    width: 18px;
+    height: 18px;
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .rarity-icon {
+    filter: drop-shadow(var(--rarity-icon-shadow));
+}
+
+.rarity.rare { background-color: var(--rarity-display-color-rare); color: #003333; }
+.rarity.epic { background-color: var(--color-epic); color: white; }
+.rarity.legendary { background-color: var(--color-legendary); color: white; }
+.rarity.divine { background-color: var(--color-divine); color: #333; }
+.rarity.cursed { background-color: var(--color-cursed); color: white; }
+.rarity.angelic { background-color: var(--color-angelic); color: white; }

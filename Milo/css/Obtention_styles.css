@@ -1,0 +1,525 @@
+:root {
+    --bg-color: #f7f7f7;
+    --text-color: #333;
+    --page-header-bg: #1e3a5f;
+    --page-header-text: white;
+    --home-link-color: white;
+    --home-link-hover-color: #a0c4ff;
+    --main-content-bg: white;
+    --main-content-shadow: rgba(0, 0, 0, 0.1);
+    --article-h2-color: #1e3a5f;
+    --article-h2-border: #a0c4ff;
+    --section-border-bottom: #ddd;
+    --footer-bg: #1e3a5f;
+    --footer-text: white;
+    --rarity-icon-shadow: none;
+    --color-rare: #007bff;
+    --color-epic: #9900cc;
+    --color-legendary: #ff8c00;
+    --color-divine: #ffd700;
+    --color-cursed: #8b0000;
+    --color-angelic: #add8e6;
+    --color-card-bg: #34495e;
+    --color-border-card: #7f8c8d;
+    --color-box-bg: #2c3e50;
+    --color-border-box: #4a6572;
+    --color-button-primary: #28a745;
+    --color-button-primary-hover: #218838;
+    --color-text-button: white;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a2e;
+    --text-color: #000000;
+    --page-header-bg: #232946;
+    --page-header-text: #e0e0e0;
+    --home-link-color: #b8c0ff;
+    --home-link-hover-color: #c0caff;
+    --main-content-bg: #2d3047;
+    --main-content-shadow: rgba(0, 0, 0, 0.4);
+    --article-h2-color: #b8c0ff;
+    --article-h2-border: #5a608d;
+    --section-border-bottom: #4a4a6e;
+    --footer-bg: #232946;
+    --footer-text: #e0e0e0;
+    --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
+    --color-rare: #4dabf7;
+    --color-epic: #a943e0;
+    --color-legendary: #ffb74d;
+    --color-divine: #ffe082;
+    --color-cursed: #ef5350;
+    --color-angelic: #90caf9;
+    --color-card-bg: #2d3047;
+    --color-border-card: #5a608d;
+    --color-box-bg: #1a1a2e;
+    --color-border-box: #424874;
+    --color-button-primary: #0056b3;
+    --color-button-primary-hover: #004085;
+    --info-box: #74FDFF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.page-header {
+    background: var(--page-header-bg);
+    color: var(--page-header-text);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.header-left-column {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.home-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--home-link-color);
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: var(--home-link-hover-color);
+}
+
+.logo-accueil {
+    height: 40px;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .logo-accueil {
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+}
+
+.page-header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5em;
+    color: var(--page-header-text);
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.dark-mode-toggle {
+    position: relative;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: 0;
+    width: 70px;
+    height: 40px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.dark-mode-toggle .icon-light,
+.dark-mode-toggle .icon-dark {
+    font-size: 1.8em;
+    line-height: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dark-mode-toggle .icon-light {
+    left: 10px;
+    color: #ffc107;
+    opacity: 1;
+}
+
+.dark-mode-toggle .icon-dark {
+    right: 10px;
+    color: #6c757d;
+    opacity: 0;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #555;
+}
+
+body.dark-mode .dark-mode-toggle .icon-light {
+    transform: translateY(-50%) translateX(-30px);
+    opacity: 0;
+}
+
+body.dark-mode .dark-mode-toggle .icon-dark {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    color: #f8f9fa;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background: var(--bg-color);
+    transition: background-color 0.5s ease;
+}
+
+.cards-box {
+    background-image: url('../img/table.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-box-bg);
+    border: 2px solid var(--color-border-box);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 1300px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-box {
+    background-color: #D9D9D9;
+    border: 2px solid var(--color-border-box);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 1300px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.refresh-button {
+    background-color: var(--color-button-primary);
+    color: var(--color-text-button);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.refresh-button:hover {
+    background-color: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+}
+
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 100%;
+    perspective: 1000px;
+}
+
+.card-container {
+    width: 220px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-out;
+    transform-origin: center center;
+}
+
+.potion-card.purchased-effect {
+    opacity: 0.7;
+    filter: grayscale(80%);
+    transform: scale(0.95);
+    cursor: not-allowed;
+}
+
+.potion-card.purchased-effect:hover {
+    transform: scale(0.95);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.potion-card {
+    background-image: url('../img/cartes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-card-bg);
+    border: 2px solid var(--color-border-card);
+    border-radius: 10px;
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.5s ease, border-color 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #f0f0f0;
+}
+
+.potion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.potion-card h2 {
+    color: #000000;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.potion-card .rarity {
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.rarity.rare { background-color: var(--color-rare); }
+.rarity.epic { background-color: var(--color-epic); }
+.rarity.legendary { background-color: var(--color-legendary); color: black; }
+.rarity.divine { background-color: var(--color-divine); color: black; }
+.rarity.cursed { background-color: var(--color-cursed); color: white; }
+.rarity.angelic { background-color: var(--color-angelic); color: black; }
+
+.potion-card.back-face {
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+button {
+    background-color: var(--color-button-primary);
+    color: var(--color-text-button);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.buy-button {
+    background-color: var(--color-button-primary);
+    color: var(--color-text-button);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: auto;
+    box-sizing: border-box;
+}
+
+.buy-button:hover {
+    background-color: var(--color-button-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buy-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1.5em 0;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1em;
+    }
+
+    .header-left-column {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1em;
+    }
+
+    .page-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .main-content {
+        padding: 1em;
+    }
+
+    .card-container {
+        width: 180px;
+        min-width: 180px;
+    }
+    .potion-card {
+        padding: 15px;
+        min-height: 150px;
+    }
+    .shop-container {
+        gap: 30px;
+    }
+
+    .dark-mode-toggle {
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 {
+        font-size: 1.5em;
+    }
+
+    .home-link span {
+        display: none;
+    }
+
+    .logo-accueil {
+        margin-right: 0;
+    }
+
+    .main-content {
+        padding: 0.5em;
+    }
+
+    .card-container {
+        width: 85%;
+        min-width: unset;
+    }
+    .shop-container {
+        flex-direction: row;
+        justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        gap: 20px;
+    }
+    button {
+        width: 90%;
+        font-size: 1em;
+    }
+    .buy-button {
+        width: 100%;
+    }
+}
+
+.rarity-icon {
+    width: 18px;
+    height: 18px;
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .rarity-icon {
+    filter: drop-shadow(var(--rarity-icon-shadow));
+}
+
+@keyframes flipIn {
+    0% {
+        opacity: 0;
+        transform: rotateY(90deg) scale(0.8);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateY(-10deg) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) scale(1);
+    }
+}
+
+.potion-card.flip-in {
+    animation: flipIn 0.6s ease-out forwards;
+}
