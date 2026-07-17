@@ -1,16 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const darkModeToggle = document.getElementById('darkModeToggle');
+    const lightIcon = darkModeToggle.querySelector('.icon-light');
+    const darkIcon = darkModeToggle.querySelector('.icon-dark');
 
-    // --- MODE SOMBRE ---
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        body.classList.add('dark-mode');
+    // On bloque temporairement les animations CSS au chargement
+    body.classList.add('no-transition');
+
+    // --- FONCTION MODE SOMBRE (Identique à Milo) ---
+    function updateMode(isDarkMode) {
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            lightIcon.style.transform = 'translateY(-50%) translateX(-30px)';
+            lightIcon.style.opacity = '0';
+            darkIcon.style.transform = 'translateY(-50%) translateX(0)';
+            darkIcon.style.opacity = '1';
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            body.classList.remove('dark-mode');
+            lightIcon.style.transform = 'translateY(-50%) translateX(0)';
+            lightIcon.style.opacity = '1';
+            darkIcon.style.transform = 'translateY(-50%) translateX(30px)';
+            darkIcon.style.opacity = '0';
+            localStorage.setItem('darkMode', 'disabled');
+        }
     }
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        updateMode(true);
+    } else {
+        updateMode(false);
+    }
+
+    // Une fois la couleur instantanément appliquée, on réactive les animations
+    setTimeout(() => {
+        body.classList.remove('no-transition');
+    }, 50);
 
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+            const isDarkMode = body.classList.contains('dark-mode');
+            updateMode(!isDarkMode);
         });
     }
 
@@ -32,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // 2. Si la boîte cliquée n'était PAS déjà ouverte, on l'ouvre
-                // (Si elle était déjà ouverte, elle restera fermée suite à l'étape 1)
                 if (!isActive) {
                     currentBox.classList.add('active');
                 }

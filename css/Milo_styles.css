@@ -125,14 +125,14 @@ a:hover {
 .header-left {
     display: flex;
     align-items: center;
-    flex: 1; /* Prend l'espace disponible à gauche */
+    flex: 1;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Pousse le bouton complètement à droite */
-    flex: 1; /* Prend l'espace disponible à droite */
+    justify-content: flex-end;
+    flex: 1;
 }
 
 .home-link {
@@ -161,10 +161,10 @@ body.dark-mode .logo-accueil {
 }
 
 .page-header h1 {
-    font-size: 2em;
+    font-size: 2.5em;
     color: var(--header-text-color);
     margin: 0;
-    flex: auto; /* Laisse le titre occuper tout le centre */
+    flex: auto;
     text-align: center;
     transition: color 0.5s ease;
 }
@@ -455,7 +455,7 @@ footer {
 
 @media (max-width: 768px) {
     .page-header {
-        flex-wrap: wrap; /* Permet au titre de glisser à la ligne sur mobile */
+        flex-wrap: wrap; 
         padding: 1em;
     }
     
@@ -465,7 +465,7 @@ footer {
 
     .page-header h1 {
         width: 100%;
-        order: 3; /* Positionne le titre sous les boutons */
+        order: 3; 
         font-size: 2em;
         margin-top: 10px;
         margin-bottom: 0.5em;
@@ -516,4 +516,10 @@ body.dark-mode .pilt-box {
     height: auto;
     border-radius: 4px;
     display: block;
+}
+
+/* --- CLASSE ANTI-FOUC (Désactive les transitions au chargement) --- */
+.no-transition,
+.no-transition * {
+    transition: none !important;
 }

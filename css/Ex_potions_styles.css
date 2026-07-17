@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&family=Abril+Fatface&display=swap');
+
 :root {
     --bg-color: #f7f7f7;
     --text-color: #333;
@@ -20,28 +22,41 @@
     --info-box-h3-color: #1e3a5f;
     
     --rarity-icon-shadow: none;
+
+    /* Variables du bouton Mode Sombre importées */
+    --toggle-bg-light: #ccc;
+    --toggle-bg-dark: #555;
+    --toggle-shadow-light: rgba(0,0,0,0.2);
+    --toggle-shadow-hover-light: rgba(0,0,0,0.3);
+    --toggle-shadow-dark: rgba(0,0,0,0.3);
+    --toggle-shadow-hover-dark: rgba(0,0,0,0.5);
+    --icon-light-color: #ffc107;
+    --icon-dark-color: #6c757d;
+    --icon-dark-color-active: #f8f9fa;
 }
 
 body.dark-mode {
-    --bg-color: #1a1a2e;
+    /* Mêmes couleurs sombres (noir/gris/cyan) que la page Milo ! */
+    --bg-color: #121212;
     --text-color: #e0e0e0;
-    --page-header-bg: #232946;
-    --page-header-text: #e0e0e0;
-    --home-link-color: #b8c0ff;
-    --home-link-hover-color: #c0caff;
     
-    --main-content-bg: #2d3047;
-    --main-content-shadow: rgba(0, 0, 0, 0.4);
-    --article-h2-color: #b8c0ff;
-    --article-h2-border: #5a608d;
-    --section-border-bottom: #4a4a6e;
+    --page-header-bg: #1a1a1a;
+    --page-header-text: #f0f0f0;
+    --home-link-color: #e0e0e0;
+    --home-link-hover-color: #9fe6b8;
     
-    --footer-bg: #232946;
-    --footer-text: #e0e0e0;
+    --main-content-bg: #1f1f1f;
+    --main-content-shadow: rgba(0, 0, 0, 0.3);
+    --article-h2-color: #9fe6b8;
+    --article-h2-border: #333;
+    --section-border-bottom: #333;
     
-    --info-box-bg: #2d3047;
-    --info-box-border: #5a608d;
-    --info-box-h3-color: #b8c0ff; 
+    --footer-bg: #1a1a1a;
+    --footer-text: #f0f0f0;
+    
+    --info-box-bg: #2a2a2a;
+    --info-box-border: #444;
+    --info-box-h3-color: #8be0ff; 
     
     --rarity-icon-shadow: 0 0 10px rgba(255, 234, 0, 0.8);
 }
@@ -67,6 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
@@ -74,10 +90,17 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 }
 
-.header-left-column {
+.header-left {
     display: flex;
     align-items: center;
-    gap: 20px;
+    flex: 1; 
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    flex: 1; 
 }
 
 .home-link {
@@ -95,32 +118,31 @@ body {
 }
 
 .logo-accueil {
-    height: 40px; /* ou width: 50px; selon la page */
+    height: 40px; 
     margin-right: 10px;
     transition: filter 0.5s ease;
 }
 
 body.dark-mode .logo-accueil {
-    /* L'aura blanche reste uniquement pour le mode sombre */
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
 .page-header h1 {
-    margin: 0 auto;
+    margin: 0;
     font-size: 2.5em;
     text-align: center;
-    flex-grow: 1;
+    flex: auto;
     color: var(--page-header-text);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
-/* --- BOUTON DARK MODE --- */
-.dark-mode-toggle {
-    position: relative; 
+/* --- BOUTON DARK MODE D'ORIGINE (Importé de Milo) --- */
+#darkModeToggle {
+    position: relative;
     width: 70px;
     height: 40px;
-    background-color: #ccc;
+    background-color: var(--toggle-bg-light);
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -128,17 +150,20 @@ body.dark-mode .logo-accueil {
     padding: 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px var(--toggle-shadow-light);
+    z-index: 1000;
+    flex-shrink: 0;
 }
 
-.dark-mode-toggle:hover {
+#darkModeToggle:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px var(--toggle-shadow-hover-light);
 }
 
-.dark-mode-toggle .icon-light,
-.dark-mode-toggle .icon-dark {
+#darkModeToggle .icon-light,
+#darkModeToggle .icon-dark {
     font-size: 1.8em;
     line-height: 1;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -147,31 +172,36 @@ body.dark-mode .logo-accueil {
     transform: translateY(-50%);
 }
 
-.dark-mode-toggle .icon-light {
+#darkModeToggle .icon-light {
     left: 10px;
-    color: #ffc107;
+    color: var(--icon-light-color);
     opacity: 1;
 }
 
-.dark-mode-toggle .icon-dark {
+#darkModeToggle .icon-dark {
     right: 10px;
-    color: #f8f9fa;
-    transform: translateY(-50%) translateX(30px);
+    color: var(--icon-dark-color);
     opacity: 0;
 }
 
-body.dark-mode .dark-mode-toggle {
-    background-color: #555;
+body.dark-mode #darkModeToggle {
+    background-color: var(--toggle-bg-dark);
+    box-shadow: 0 2px 5px var(--toggle-shadow-dark);
 }
 
-body.dark-mode .dark-mode-toggle .icon-light {
+body.dark-mode #darkModeToggle:hover {
+    box-shadow: 0 4px 10px var(--toggle-shadow-hover-dark);
+}
+
+body.dark-mode #darkModeToggle .icon-light {
     transform: translateY(-50%) translateX(-30px);
     opacity: 0;
 }
 
-body.dark-mode .dark-mode-toggle .icon-dark {
+body.dark-mode #darkModeToggle .icon-dark {
     transform: translateY(-50%) translateX(0);
     opacity: 1;
+    color: var(--icon-dark-color-active);
 }
 
 /* --- CONTENU PRINCIPAL --- */
@@ -255,11 +285,11 @@ body.dark-mode .rarity-icon {
 }
 
 .accordion-icon {
-    display: none; /* Flèche invisible sur PC */
+    display: none; 
 }
 
 .accordion-content {
-    max-height: none; /* Toujours visible sur PC */
+    max-height: none; 
 }
 
 .main-content p {
@@ -302,19 +332,20 @@ footer p {
 
 @media (max-width: 768px) {
     .page-header {
-        flex-direction: column;
-        text-align: center;
+        flex-wrap: wrap; 
         padding: 1em;
     }
-    .header-left-column {
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 1em;
+    .header-left, .header-right {
+        flex: 0 0 auto;
     }
     .page-header h1 {
+        width: 100%;
+        order: 3; 
         font-size: 1.8em;
+        margin-top: 10px;
         margin-bottom: 0.5em;
     }
+    
     .main-content { margin: 1em; padding: 1.5em; }
     .main-content h2 { font-size: 1.6em; }
 
@@ -348,7 +379,12 @@ footer p {
     }
 }
 
-/* On garde le logo bien placé sur très petit écran, mais on ne cache plus le texte */
 @media (max-width: 480px) {
     .logo-accueil { margin-right: 10px; }
+}
+
+/* --- CLASSE ANTI-FOUC (Désactive les transitions au chargement) --- */
+.no-transition,
+.no-transition * {
+    transition: none !important;
 }
