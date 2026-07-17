@@ -118,7 +118,21 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
     transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Prend l'espace disponible à gauche */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Pousse le bouton complètement à droite */
+    flex: 1; /* Prend l'espace disponible à droite */
 }
 
 .home-link {
@@ -129,7 +143,6 @@ a:hover {
     font-weight: bold;
     color: var(--home-link-color);
     font-size: 1.1em;
-    margin-right: 20px;
     transition: color 0.3s ease;
 }
 
@@ -138,21 +151,20 @@ a:hover {
 }
 
 .logo-accueil {
-    height: 40px; /* ou width: 50px; selon la page */
+    height: 40px; 
     margin-right: 10px;
     transition: filter 0.5s ease;
 }
 
 body.dark-mode .logo-accueil {
-    /* L'aura blanche reste uniquement pour le mode sombre */
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
 .page-header h1 {
     font-size: 2em;
     color: var(--header-text-color);
-    margin: 0 auto;
-    flex-grow: 1;
+    margin: 0;
+    flex: auto; /* Laisse le titre occuper tout le centre */
     text-align: center;
     transition: color 0.5s ease;
 }
@@ -174,7 +186,6 @@ body.dark-mode .logo-accueil {
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 2px 5px var(--toggle-shadow-light);
     z-index: 1000;
-    margin-left: 20px;
     flex-shrink: 0;
 }
 
@@ -224,7 +235,6 @@ body.dark-mode #darkModeToggle .icon-dark {
     opacity: 1;
     color: var(--icon-dark-color-active);
 }
-
 
 /* --- MAIN & CITATION --- */
 main {
@@ -441,28 +451,28 @@ footer {
         width: 95%;
         padding: 15px 20px;
     }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-wrap: wrap; /* Permet au titre de glisser à la ligne sur mobile */
+        padding: 1em;
+    }
+    
+    .header-left, .header-right {
+        flex: 0 0 auto;
+    }
 
     .page-header h1 {
-        font-size: 1.5em;
-        text-align: left;
-    }
-
-    .page-header .home-link {
-        margin-right: 10px;
-    }
-
-    .logo-accueil {
-        width: 40px;
+        width: 100%;
+        order: 3; /* Positionne le titre sous les boutons */
+        font-size: 2em;
+        margin-top: 10px;
+        margin-bottom: 0.5em;
     }
 }
 
 @media (max-width: 600px) {
-    .page-header {
-        padding: 10px 15px;
-    }
-    .page-header h1 {
-        font-size: 1.3em;
-    }
     .wiki-layout {
         padding: 15px;
         gap: 15px;
@@ -473,6 +483,12 @@ footer {
     .quote-box {
         padding: 10px 15px;
         margin: 15px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-accueil {
+        margin-right: 10px;
     }
 }
 
