@@ -138,10 +138,14 @@ a:hover {
 }
 
 .logo-accueil {
-    width: 50px;
-    height: auto;
+    height: 40px; /* ou width: 50px; selon la page */
     margin-right: 10px;
-    margin-bottom: 0;
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .logo-accueil {
+    /* L'aura blanche reste uniquement pour le mode sombre */
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
 .page-header h1 {
