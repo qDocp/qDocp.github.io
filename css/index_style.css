@@ -20,6 +20,25 @@
     --mobile-menu-text: white;
 }
 
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #8d9bff;
+    --link-hover-color: #c0caff;
+
+    --potions-box-bg: rgba(46, 48, 79, 0.8);
+    --potions-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    --potions-name-color: #e0e0e0;
+    --note-text-color: #e0e0e0;
+    --highlight-text-color: #b8c0ff;
+    --section-title-color: #b8c0ff;
+    --section-title-underline: #6a9ac9;
+    --big-title-color: #ffcccc;
+
+    --mobile-menu-bg: #232946;
+    --mobile-menu-text: #e0e0e0;
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -30,6 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 a {
@@ -54,18 +74,86 @@ a:hover {
     padding: 25px;
     display: flex;
     flex-direction: column;
+    transition: background-image 0.5s ease;
+}
+
+body.dark-mode .top-page {
+    background-image: url('../img/bgsombre.png');
 }
 
 .header {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
 }
 
 .header img.logo {
     width: 150px;
     height: auto;
+}
+
+/* --- BOUTON DARK MODE --- */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode-toggle {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #555;
+}
+
+.icon-light, .icon-dark {
+    font-size: 1.8em;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icon-light {
+    left: 10px;
+    color: #ffc107;
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+}
+
+.icon-dark {
+    right: 10px;
+    color: #f8f9fa;
+    transform: translateY(-50%) translateX(30px);
+    opacity: 0;
+}
+
+body.dark-mode .icon-light {
+    transform: translateY(-50%) translateX(-30px);
+    opacity: 0;
+}
+
+body.dark-mode .icon-dark {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
 }
 
 /* --- Titres --- */
@@ -84,6 +172,7 @@ a:hover {
     font-weight: 100;
     text-align: center;
     margin: 0;
+    transition: color 0.5s ease;
 }
 
 .section-title {
@@ -94,6 +183,7 @@ a:hover {
     text-align: center;
     margin: 50px 0 30px 0;
     color: var(--section-title-color);
+    transition: color 0.5s ease;
 }
 
 .section-title::before {
@@ -105,12 +195,14 @@ a:hover {
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
+    transition: background-color 0.5s ease;
 }
 
 /* --- Accès rapide --- */
 .Acces-rapide {
     margin: 100px;
     background-color: var(--bg-color);
+    transition: background-color 0.5s ease;
 }
 
 .groupe1 {
@@ -158,6 +250,7 @@ a:hover {
     padding: 5px 20px;
     box-sizing: border-box;
     text-align: center;
+    transition: background-color 0.5s ease;
 }
 
 .potion-name {
@@ -166,6 +259,7 @@ a:hover {
     line-height: 1.2;
     margin: 5px 0;
     color: var(--potions-name-color);
+    transition: color 0.5s ease;
 }
 
 /* --- Note de prévention --- */
@@ -174,15 +268,18 @@ a:hover {
     text-align: justify;
     line-height: 1.6;
     background-color: var(--bg-color);
+    transition: background-color 0.5s ease;
 }
 
 .prevention-text {
     font-size: 30px;
     color: var(--note-text-color);
+    transition: color 0.5s ease;
 }
 
 .prevention-text strong {
     color: var(--highlight-text-color);
+    transition: color 0.5s ease;
 }
 
 /* =========================================

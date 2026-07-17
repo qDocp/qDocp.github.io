@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explication sur les potions</title>
     <link rel="stylesheet" href="../css/Ex_potions_styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -14,7 +15,7 @@
                 <img src="../img/logo.png" alt="Logo Retour" class="logo-accueil">
                 <span>Retour</span>
             </a>
-            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Activer le mode sombre">
                 <span class="icon-light">☀️</span>
                 <span class="icon-dark">🌙</span>
             </button>
@@ -26,57 +27,70 @@
         <section id="introduction">
             <h2>Le classement de la rareté des potions</h2>
             <p>Les potions sont classées selon plusieurs niveaux de rareté, déterminés par la puissance, l’impact et la complexité de leurs effets. Plus une potion possède une capacité extraordinaire ou déstabilisante, plus elle sera considérée comme rare et précieuse. Ainsi, les potions aux effets particulièrement puissants sont reléguées dans des catégories supérieures, non seulement pour souligner leur potentiel, mais aussi pour ajuster leur taux d’apparition : plus un effet est exceptionnel, plus la potion se fera rare. À l’inverse, les potions aux effets simples ou mineurs sont bien plus communes.</p>
-                <p>Ce système permet de mieux équilibrer la valeur, la puissance et la fréquence des potions dans le monde. Parmi les différents types de rareté établis, on retrouve les suivants :</p>
+            <p>Ce système permet de mieux équilibrer la valeur, la puissance et la fréquence des potions dans le monde. Parmi les différents types de rareté établis, on retrouve les suivants :</p>
         </section>
 
         <section id="apercu-rapide">
             <div class="flex-boxes-container">
+                
                 <div class="info-box">
-                    <h3>Les potions rares:</h3>
-                    <p>Les <strong>potions rares</strong> sont les plus <strong>communes et faciles</strong> à obtenir. Malgré la simplicité de leurs effets, elles n’en restent pas moins <strong>abondantes</strong>, et se déclinent en une <strong>multitude de sorts aux effets variés</strong>, ce qui en fait les potions les plus répandues.</p>
-                    <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang rare</strong> a <strong>40% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>92,2%</strong>. Ainsi, il est fort probable de croiser une potion rare à chaque visite.</p>
-                    <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/rare.png" alt="Icône Rare" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
-
+                    <h3 class="accordion-header">Les potions rares: <span class="accordion-icon">▼</span></h3>
+                    <div class="accordion-content">
+                        <p>Les <strong>potions rares</strong> sont les plus <strong>communes et faciles</strong> à obtenir. Malgré la simplicité de leurs effets, elles n’en restent pas moins <strong>abondantes</strong>, et se déclinent en une <strong>multitude de sorts aux effets variés</strong>, ce qui en fait les potions les plus répandues.</p>
+                        <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang rare</strong> a <strong>40% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>92,2%</strong>. Ainsi, il est fort probable de croiser une potion rare à chaque visite.</p>
+                        <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/rare.png" alt="Icône Rare" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
+                    </div>
                 </div>
+
                 <div class="info-box">
-                    <h3>Les potions épiques:</h3>
-                    <p>Les <strong>potions épiques</strong> sont plus <strong>difficiles</strong> à obtenir. Bien que leurs effets soient généralement complexes, elles demeurent <strong>peu communes</strong>, avec une <strong>diversité de sorts plus restreinte</strong>. Cela ne les empêche pas d’être particulièrement recherchées.</p>
-                    <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang épique</strong> a <strong>25% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5
-                    emplacements</strong>, le taux d’apparition global atteint environ <strong>76,3%</strong>. Ainsi, il demeure relativement rare de croiser une potion épique.</p>
-                    <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/epic.png" alt="Icône Épic" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
-
+                    <h3 class="accordion-header">Les potions épiques: <span class="accordion-icon">▼</span></h3>
+                    <div class="accordion-content">
+                        <p>Les <strong>potions épiques</strong> sont plus <strong>difficiles</strong> à obtenir. Bien que leurs effets soient généralement complexes, elles demeurent <strong>peu communes</strong>, avec une <strong>diversité de sorts plus restreinte</strong>. Cela ne les empêche pas d’être particulièrement recherchées.</p>
+                        <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang épique</strong> a <strong>25% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, le taux d’apparition global atteint environ <strong>76,3%</strong>. Ainsi, il demeure relativement rare de croiser une potion épique.</p>
+                        <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/epic.png" alt="Icône Épic" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
+                    </div>
                 </div>
+
                 <div class="info-box">
-                    <h3>Les potions légendaires:</h3>
-                    <p>Les <strong>potions légendaires</strong> sont bien plus <strong>difficiles</strong> à obtenir. En raison de <strong>la complexité de leurs effets</strong>, elles font partie d’une <strong>minorité</strong> exclusive, d'une poignée de sorts d’exception, comptant parmi les plus rares qui existent.</p>
-                    <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang légendaire</strong> a <strong>15% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>55,6%</strong>. Ainsi, il est très rare de croiser une potion légendaire.</p>
-                    <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/legen.png" alt="Icône Légendaire" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
-
+                    <h3 class="accordion-header">Les potions légendaires: <span class="accordion-icon">▼</span></h3>
+                    <div class="accordion-content">
+                        <p>Les <strong>potions légendaires</strong> sont bien plus <strong>difficiles</strong> à obtenir. En raison de <strong>la complexité de leurs effets</strong>, elles font partie d’une <strong>minorité</strong> exclusive, d'une poignée de sorts d’exception, comptant parmi les plus rares qui existent.</p>
+                        <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang légendaire</strong> a <strong>15% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>55,6%</strong>. Ainsi, il est très rare de croiser une potion légendaire.</p>
+                        <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/legen.png" alt="Icône Légendaire" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
+                    </div>
                 </div>
+
                 <div class="info-box">
-                    <h3>Les potions divines:</h3>
-                    <p>Les <strong>potions divines</strong> sont extrêmement <strong>difficiles</strong> à obtenir. En raison de <strong>la puissance de leurs effets</strong>, elles font partie d’une <strong>élite exclusive de sorts étant la rareté la plus haute</strong>, comptant parmi les plus <strong>complexes</strong> qui existent.</p>
-                    <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang divin</strong> a <strong>10% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>40,95%</strong>. Ainsi, il est très peu probable de croiser une potion divine.</p>
-                    <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/divine.png" alt="Icône Divine" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
-
+                    <h3 class="accordion-header">Les potions divines: <span class="accordion-icon">▼</span></h3>
+                    <div class="accordion-content">
+                        <p>Les <strong>potions divines</strong> sont extrêmement <strong>difficiles</strong> à obtenir. En raison de <strong>la puissance de leurs effets</strong>, elles font partie d’une <strong>élite exclusive de sorts étant la rareté la plus haute</strong>, comptant parmi les plus <strong>complexes</strong> qui existent.</p>
+                        <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang divin</strong> a <strong>10% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>40,95%</strong>. Ainsi, il est très peu probable de croiser une potion divine.</p>
+                        <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/divine.png" alt="Icône Divine" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
+                    </div>
                 </div>
+
                 <div class="info-box">
-                    <h3>Les potions maudites:</h3>
-                    <p>Les <strong>potions maudites</strong> font partie d’une catégorie à part, car il ne peut en exister <strong>qu’une seule à la fois</strong>. En raison de <strong>la puissance dévastatrice de leurs effets</strong>, elles relèvent d’une <strong>classe à part</strong>, comptant parmi les plus <strong>sophistiquées</strong> qui soient.</p>
-                    <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang maudit</strong> a <strong>7% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>30,17%</strong>. Ainsi, il est <strong>quasiment</strong> impossible de croiser une potion maudite.</p>
-                    <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/maudite.png" alt="Icône Maudite" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
-
+                    <h3 class="accordion-header">Les potions maudites: <span class="accordion-icon">▼</span></h3>
+                    <div class="accordion-content">
+                        <p>Les <strong>potions maudites</strong> font partie d’une catégorie à part, car il ne peut en exister <strong>qu’une seule à la fois</strong>. En raison de <strong>la puissance dévastatrice de leurs effets</strong>, elles relèvent d’une <strong>classe à part</strong>, comptant parmi les plus <strong>sophistiquées</strong> qui soient.</p>
+                        <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang maudit</strong> a <strong>7% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>30,17%</strong>. Ainsi, il est <strong>quasiment</strong> impossible de croiser une potion maudite.</p>
+                        <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/maudite.png" alt="Icône Maudite" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
+                    </div>
                 </div>
+
                 <div class="info-box">
-                    <h3>Les potion angéliques:</h3>
-                    <p>Les <strong>potions angéliques</strong> font partie d’une catégorie à part, car il ne peut en exister <strong>qu’une seule à la fois</strong>. En raison de <strong>la puissance bénéfique de leurs effets</strong>, elles relèvent d’une <strong>classe exceptionnelle</strong>, comptant parmi les plus <strong>sophistiquées</strong> qui soient.</p>
-                    <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang angélique</strong> a <strong>3% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>14,13%</strong>. Ainsi, il est <strong>très peu probable</strong> de croiser une potion angélique.</p>
-                    <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/angelique.png" alt="Icône Angélique" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
-
+                    <h3 class="accordion-header">Les potions angéliques: <span class="accordion-icon">▼</span></h3>
+                    <div class="accordion-content">
+                        <p>Les <strong>potions angéliques</strong> font partie d’une catégorie à part, car il ne peut en exister <strong>qu’une seule à la fois</strong>. En raison de <strong>la puissance bénéfique de leurs effets</strong>, elles relèvent d’une <strong>classe exceptionnelle</strong>, comptant parmi les plus <strong>sophistiquées</strong> qui soient.</p>
+                        <p>Dans l’échoppe de Milo, la mécanique de distribution repose sur <strong>5 emplacements de vente</strong>. <strong>Chacun de ces emplacements peut faire apparaître une potion aléatoirement, selon sa rareté.</strong> Une potion de <strong>rang angélique</strong> a <strong>3% de chances d’apparaître dans un seul emplacement</strong>. En cumulant les probabilités sur l’ensemble des <strong>5 emplacements</strong>, son taux d’apparition global atteint environ <strong>14,13%</strong>. Ainsi, il est <strong>très peu probable</strong> de croiser une potion angélique.</p>
+                        <p>Ces potions se distinguent visuellement grâce à leur insigne distinctif, propre à leur rang : un <strong>symbole <img src="../img/angelique.png" alt="Icône Angélique" class="rarity-icon"></strong> facilement reconnaissable, garantissant immédiatement leur classification sans confusion.</p>
+                    </div>
                 </div>
+
             </div>
         </section>
-        <section id="types-de-potions">
+
+        <section id="efficacite-potions">
             <h2>L’efficacité des potions</h2>
             <p>En plus de leur rareté, les potions sont également classées selon un <strong>taux d’efficacité</strong> allant de <strong>1 à 3</strong>, permettant d’évaluer la <strong>puissance réelle de leurs effets</strong>. Ce système affine la compréhension du potentiel d’une potion : une même catégorie de rareté peut ainsi offrir des niveaux d’intensité différents selon son efficacité.</p>
             <ul>
@@ -86,7 +100,8 @@
             </ul>
             <p>Ce classement offre donc un aperçu plus précis de la force d’une potion, et permet de faire des choix éclairés selon leurs besoins.</p>
         </section>
-        <section id="types-de-potions">
+
+        <section id="formats-potions">
             <h2>Types des potions</h2>
             <p>Les potions, quel que soit leur <strong>rang</strong> ou leur <strong>catégorie</strong>, peuvent exister sous deux types bien distincts :</p>
             <ul>
@@ -95,21 +110,21 @@
             </ul>
             <p>Cette diversité de formats permet des <strong>usages variés</strong> et stratégiques : qu’il s’agisse d’une application directe sur soi ou d’une utilisation plus discrète, voire surprise, sur autrui.</p>
         </section>
-        <section id="types-de-potions">
+
+        <section id="potions-exclusives">
             <h2>Potions exclusives</h2>
             <h3>Les potions exclusives à Milo :</h3>
-                <p>Il existe une dernière catégorie de potions, <strong>uniquement liée à Milo</strong>. Ces potions <strong>spéciales</strong> ne sont <strong>pas disponibles à la vente dans son échoppe</strong> ; elles peuvent uniquement être obtenues <strong>aléatoirement</strong> après qu’une personne ait tué Milo. Lors de cet événement, le joueur a <strong>50% de chances</strong> d’obtenir l’une ou l’autre des deux potions suivantes :</p>
-                <ul>
-                    <li><strong>La Potion de Suite</strong> : lorsqu’elle est bue, cette potion transmet à son utilisateur <strong>l’intégralité du savoir de Milo</strong> ainsi que <strong>la capacité de confectionner toutes les potions existantes</strong>, quel que soit leur type ou rang. De plus, <strong>Pilt</strong>, le fidèle compagnon de Milo, <strong>reconnaîtra le buveur de la potion comme son nouveau maître</strong>.</li>
-                    <li><strong>La Potion de Désir</strong> : une fois ingérée, elle permet à la personne d’<strong>exaucer un vœu unique</strong>, réalisable selon les limites des capacités que Milo possédait de son vivant. Un <strong>fantôme inexpressif de Milo</strong> apparaîtra alors, chargé d'exécuter ce souhait.</li>
-                </ul>
-                <p>Ces potions sont <strong>uniques et limitées à un seul exemplaire</strong> chacune. Même si Milo est ressuscité par n’importe quel moyen, <strong>il ne redeviendra jamais propriétaire de ces potions</strong> et <strong>perdra irrémédiablement tout son savoir</strong> si quelqu’un a bu la Potion de Suite après sa mort.</p>
-
+            <p>Il existe une dernière catégorie de potions, <strong>uniquement liée à Milo</strong>. Ces potions <strong>spéciales</strong> ne sont <strong>pas disponibles à la vente dans son échoppe</strong> ; elles peuvent uniquement être obtenues <strong>aléatoirement</strong> après qu’une personne ait tué Milo. Lors de cet événement, le joueur a <strong>50% de chances</strong> d’obtenir l’une ou l’autre des deux potions suivantes :</p>
+            <ul>
+                <li><strong>La Potion de Suite</strong> : lorsqu’elle est bue, cette potion transmet à son utilisateur <strong>l’intégralité du savoir de Milo</strong> ainsi que <strong>la capacité de confectionner toutes les potions existantes</strong>, quel que soit leur type ou rang. De plus, <strong>Pilt</strong>, le fidèle compagnon de Milo, <strong>reconnaîtra le buveur de la potion comme son nouveau maître</strong>.</li>
+                <li><strong>La Potion de Désir</strong> : une fois ingérée, elle permet à la personne d’<strong>exaucer un vœu unique</strong>, réalisable selon les limites des capacités que Milo possédait de son vivant. Un <strong>fantôme inexpressif de Milo</strong> apparaîtra alors, chargé d'exécuter ce souhait.</li>
+            </ul>
+            <p>Ces potions sont <strong>uniques et limitées à un seul exemplaire</strong> chacune. Même si Milo est ressuscité par n’importe quel moyen, <strong>il ne redeviendra jamais propriétaire de ces potions</strong> et <strong>perdra irrémédiablement tout son savoir</strong> si quelqu’un a bu la Potion de Suite après sa mort.</p>
         </section>
     </main>
 
     <footer>
-        <p>🦊-- Wiki de potions L'échappe de Milo --🦊</p>
+        <p>🦊-- Wiki de potions L'échoppe de Milo --🦊</p>
     </footer>
 
     <script src="../js/Ex_potions_dark-mode.js"></script>

@@ -5,28 +5,20 @@
     --page-header-text: white;
     --home-link-color: white;
     --home-link-hover-color: #a0c4ff;
+    
     --main-content-bg: white;
     --main-content-shadow: rgba(0, 0, 0, 0.1);
     --article-h2-color: #1e3a5f;
     --article-h2-border: #a0c4ff;
     --section-border-bottom: #ddd;
+    
     --footer-bg: #1e3a5f;
     --footer-text: white;
-    --info-section-bg: var(--main-content-bg);
-    --info-section-shadow: var(--main-content-shadow);
+    
     --info-box-bg: #e3eefc;
     --info-box-border: #3b82f6;
-    --info-box-h2-color: #ffd700;
-    --info-box-li-before-color: #ffd700;
-    --color-card-bg: #34495e;
-    --color-border-card: #2c3e50;
-    --rarity-display-color: #EDEB4F;
-    --rarity-display-color-rare: #00ffff;
-    --color-epic: #9b59b6;
-    --color-legendary: #e67e22;
-    --color-divine: #f1c40f;
-    --color-cursed: #c0392b;
-    --color-angelic: #f39c12;
+    --info-box-h3-color: #1e3a5f;
+    
     --rarity-icon-shadow: none;
 }
 
@@ -37,23 +29,20 @@ body.dark-mode {
     --page-header-text: #e0e0e0;
     --home-link-color: #b8c0ff;
     --home-link-hover-color: #c0caff;
+    
     --main-content-bg: #2d3047;
     --main-content-shadow: rgba(0, 0, 0, 0.4);
     --article-h2-color: #b8c0ff;
     --article-h2-border: #5a608d;
     --section-border-bottom: #4a4a6e;
+    
     --footer-bg: #232946;
     --footer-text: #e0e0e0;
-    --info-section-bg: var(--main-content-bg);
-    --info-section-shadow: var(--main-content-shadow);
+    
     --info-box-bg: #2d3047;
     --info-box-border: #5a608d;
-    --info-box-h2-color: var(--color-divine);
-    --info-box-li-before-color: var(--color-divine);
-    --color-card-bg: #1c2a38;
-    --color-border-card: #202e3b;
-    --rarity-display-color: #FFEA00;
-    --rarity-display-color-rare: #00e6e6;
+    --info-box-h3-color: #b8c0ff; 
+    
     --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
 }
 
@@ -70,6 +59,7 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* --- HEADER --- */
 .page-header {
     background: var(--page-header-bg);
     color: var(--page-header-text);
@@ -125,10 +115,9 @@ body.dark-mode .logo-accueil {
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
+/* --- BOUTON DARK MODE --- */
 .dark-mode-toggle {
-    position: absolute;
-    top: 150px;
-    left: 20px; 
+    position: relative; 
     width: 70px;
     height: 40px;
     background-color: #ccc;
@@ -139,7 +128,6 @@ body.dark-mode .logo-accueil {
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
@@ -167,7 +155,8 @@ body.dark-mode .logo-accueil {
 
 .dark-mode-toggle .icon-dark {
     right: 10px;
-    color: #6c757d;
+    color: #f8f9fa;
+    transform: translateY(-50%) translateX(30px);
     opacity: 0;
 }
 
@@ -183,21 +172,20 @@ body.dark-mode .dark-mode-toggle .icon-light {
 body.dark-mode .dark-mode-toggle .icon-dark {
     transform: translateY(-50%) translateX(0);
     opacity: 1;
-    color: #f8f9fa;
 }
 
+/* --- CONTENU PRINCIPAL --- */
 main {
     flex-grow: 1;
 }
 
 .main-content {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 2em auto;
     padding: 2em;
     background: var(--main-content-bg);
     border-radius: 10px;
     box-shadow: 0 6px 15px var(--main-content-shadow);
-    flex-grow: 1;
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -224,6 +212,56 @@ main {
     transition: color 0.5s ease, border-left-color 0.5s ease, text-shadow 0.5s ease;
 }
 
+/* --- ENCADRÉS D'INFORMATIONS --- */
+.flex-boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.info-box {
+    background-color: var(--info-box-bg);
+    border: 2px solid var(--info-box-border);
+    border-radius: 10px;
+    padding: 25px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    text-align: left;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+}
+
+.rarity-icon {
+    width: 18px;
+    height: 18px;
+    transition: filter 0.5s ease;
+    vertical-align: middle;
+}
+
+body.dark-mode .rarity-icon {
+    filter: drop-shadow(var(--rarity-icon-shadow));
+}
+
+.accordion-header {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: var(--info-box-h3-color);
+    transition: color 0.5s ease;
+    margin-bottom: 15px;
+}
+
+.accordion-icon {
+    display: none; /* Flèche invisible sur PC */
+}
+
+.accordion-content {
+    max-height: none; /* Toujours visible sur PC */
+}
+
 .main-content p {
     margin-bottom: 1em;
     text-align: justify;
@@ -239,211 +277,7 @@ main {
     margin-bottom: 0.5em;
 }
 
-#potionShopSection {
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: 20px auto 40px auto;
-    background-color: var(--main-content-bg);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px var(--main-content-shadow);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
-    text-align: center;
-}
-
-#potionShopSection1 {
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: 20px auto 40px auto;
-    background-color: var(--main-content-bg);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px var(--main-content-shadow);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
-}
-
-.cards-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.shop-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 20px 0;
-}
-
-.refresh-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 15px;
-}
-
-.refresh-button:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.card-container {
-    perspective: 1000px;
-    width: 220px;
-    height: 300px;
-}
-
-.potion-card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-out;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--color-card-bg);
-    border: 2px solid var(--color-border-card);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    color: white;
-}
-
-.potion-card.flip-in {
-    transform: rotateY(0deg);
-}
-
-.potion-card h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6em;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    color: #fff;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-}
-
-.rarity {
-    font-family: 'Cinzel', serif;
-    font-weight: bold;
-    font-size: 0.9em;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.rarity.rare { background-color: var(--rarity-display-color-rare); color: #003333; }
-.rarity.epic { background-color: var(--color-epic); color: white; }
-.rarity.legendary { background-color: var(--color-legendary); color: white; }
-.rarity.divine { background-color: var(--color-divine); color: #333; }
-.rarity.cursed { background-color: var(--color-cursed); color: white; }
-.rarity.angelic { background-color: var(--color-angelic); color: white; }
-
-.buy-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    width: 80%;
-    margin-top: auto;
-}
-
-.buy-button:hover:not(:disabled) {
-    background-color: #218838;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.buy-button:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-.potion-card.purchased-effect {
-    box-shadow: 0 0 20px 5px rgba(40, 167, 69, 0.8);
-    border-color: #28a745;
-}
-
-#infoSection {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: 40px auto 20px auto;
-    background-color: var(--info-section-bg);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px var(--info-section-shadow);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
-}
-
-.info-box {
-    background-color: var(--info-box-bg);
-    border: 2px solid var(--info-box-border);
-    border-radius: 10px;
-    padding: 25px;
-    flex: 1;
-    min-width: 280px;
-    max-width: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    color: var(--text-color);
-    text-align: left;
-    line-height: 1.6;
-    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
-}
-
-.info-box h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8em;
-    color: var(--info-box-h2-color);
-    margin-top: 0;
-    margin-bottom: 15px;
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-    transition: color 0.5s ease, text-shadow 0.5s ease;
-}
-
-.info-box ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-}
-
-.info-box li {
-    margin-bottom: 8px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.info-box li::before {
-    content: '✨';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--info-box-li-before-color);
-    font-size: 1.1em;
-}
-
+/* --- FOOTER --- */
 footer {
     background: var(--footer-bg);
     color: var(--footer-text);
@@ -460,26 +294,11 @@ footer p {
     letter-spacing: 0.5px;
 }
 
+/* --- RESPONSIVE DESIGN (Tablettes et Mobiles) --- */
 @media (max-width: 900px) {
-    .page-header h1 {
-        font-size: 2em;
-    }
-
-    #infoSection {
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .info-box {
-        max-width: 48%;
-        min-width: unset;
-    }
-
-    #potionShopSection {
-        padding: 20px;
-    }
+    .page-header h1 { font-size: 1.8em; }
+    .info-box { max-width: 100%; }
 }
-
 
 @media (max-width: 768px) {
     .page-header {
@@ -487,106 +306,49 @@ footer p {
         text-align: center;
         padding: 1em;
     }
-
     .header-left-column {
         width: 100%;
-        justify-content: center;
+        justify-content: space-between;
         margin-bottom: 1em;
     }
-
     .page-header h1 {
-        font-size: 2em;
+        font-size: 1.8em;
         margin-bottom: 0.5em;
     }
+    .main-content { margin: 1em; padding: 1.5em; }
+    .main-content h2 { font-size: 1.6em; }
 
-    .main-content {
-        margin: 1em;
-        padding: 1.5em;
-    }
-
-    .main-content h2 {
-        font-size: 1.8em;
-    }
-
-    .dark-mode-toggle {
-        margin-top: 15px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #infoSection {
-        flex-direction: column;
+    /* Mécanique Accordéon Uniquement sur Mobile */
+    .accordion-header {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding: 20px;
-        margin-top: 20px;
+        margin-bottom: 0; /* Enlève la marge si c'est fermé */
+        transition: margin-bottom 0.3s ease;
     }
-
-    .info-box {
-        width: 100%;
-        max-width: 90%;
-        flex: none;
+    .info-box.active .accordion-header {
+        margin-bottom: 15px; /* Remet la marge une fois ouvert */
     }
-    
-    .shop-container {
-        gap: 15px;
+    .accordion-icon {
+        display: inline-block;
+        font-size: 0.8em;
+        transition: transform 0.3s ease;
+    }
+    .info-box.active .accordion-icon {
+        transform: rotate(180deg); /* La flèche tourne quand on ouvre */
+    }
+    .accordion-content {
+        max-height: 0; /* Masque le contenu */
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+    .info-box.active .accordion-content {
+        max-height: 1000px; /* Dévoile le contenu de façon fluide */
     }
 }
 
 @media (max-width: 480px) {
-    .page-header h1 {
-        font-size: 1.8em;
-    }
-
-    .home-link span {
-        display: none;
-    }
-
-    .logo-accueil {
-        margin-right: 0;
-    }
-
-    .main-content {
-        padding: 1em;
-    }
-
-    .main-content h2 {
-        font-size: 1.5em;
-    }
-    
-    .potion-card {
-        width: 180px;
-        height: 250px;
-        padding: 15px;
-    }
-
-    .potion-card h2 {
-        font-size: 1.4em;
-    }
-
-    .rarity {
-        font-size: 0.8em;
-        padding: 3px 8px;
-    }
-
-    .buy-button {
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
+    .home-link span { display: none; }
+    .logo-accueil { margin-right: 0; }
 }
-
-.rarity-icon {
-    width: 18px;
-    height: 18px;
-    transition: filter 0.5s ease;
-}
-
-body.dark-mode .rarity-icon {
-    filter: drop-shadow(var(--rarity-icon-shadow));
-}
-
-.rarity.rare { background-color: var(--rarity-display-color-rare); color: #003333; }
-.rarity.epic { background-color: var(--color-epic); color: white; }
-.rarity.legendary { background-color: var(--color-legendary); color: white; }
-.rarity.divine { background-color: var(--color-divine); color: #333; }
-.rarity.cursed { background-color: var(--color-cursed); color: white; }
-.rarity.angelic { background-color: var(--color-angelic); color: white; }
