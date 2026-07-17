@@ -95,6 +95,8 @@ body {
     background: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -108,6 +110,7 @@ a:hover {
     color: var(--link-hover-color);
 }
 
+/* --- HEADER --- */
 .page-header {
     background: var(--header-bg);
     color: var(--header-text-color);
@@ -150,6 +153,7 @@ a:hover {
     transition: color 0.5s ease;
 }
 
+/* --- BOUTON DARK MODE D'ORIGINE --- */
 #darkModeToggle {
     position: relative;
     width: 70px;
@@ -218,6 +222,7 @@ body.dark-mode #darkModeToggle .icon-dark {
 }
 
 
+/* --- MAIN & CITATION --- */
 main {
     padding-bottom: 20px;
 }
@@ -262,6 +267,7 @@ footer {
     padding: 20px 30px;
     max-width: 1200px;
     margin: 0 auto;
+    align-items: flex-start;
 }
 
 .sidebar {
@@ -291,6 +297,16 @@ footer {
     border-radius: 6px;
     margin-bottom: 15px;
     display: block;
+}
+
+.sidebar h3 {
+    font-size: 1.1em;
+    color: var(--sidebar-h2-color);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed var(--sidebar-h2-border);
+    padding-bottom: 5px;
+    transition: color 0.5s ease, border-color 0.5s ease;
 }
 
 .sidebar ul {
