@@ -15,9 +15,6 @@
     --section-title-underline: #ADD981;
     --big-title-color: darkred;
     
-    --nav-link-color: #16417C;
-    --nav-link-hover-color: #0d284a;
-
     /* Variables exclusives au menu mobile */
     --mobile-menu-bg: #1e3a5f;
     --mobile-menu-text: white;
@@ -61,41 +58,14 @@ a:hover {
 
 .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
 }
 
 .header img.logo {
     width: 150px;
     height: auto;
-}
-
-/* --- Menu PC --- */
-.desktop-nav {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.desktop-nav ul {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.desktop-nav a {
-    color: var(--nav-link-color);
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-    transition: color 0.3s ease;
-}
-
-.desktop-nav a:hover {
-    color: var(--nav-link-hover-color);
 }
 
 /* --- Titres --- */
@@ -219,10 +189,6 @@ a:hover {
    ADAPTATION TÉLÉPHONE (Responsive Design)
    ========================================= */
 @media (max-width: 900px) {
-    /* Cacher le menu PC */
-    .desktop-nav {
-        display: none; 
-    }
 
     /* Cacher les tuiles d'accès rapide */
     .Acces-rapide {
