@@ -14,29 +14,13 @@
     --section-title-color: #333;
     --section-title-underline: #ADD981;
     --big-title-color: darkred;
+    
+    --nav-link-color: #16417C;
+    --nav-link-hover-color: #0d284a;
 
     /* Variables exclusives au menu mobile */
     --mobile-menu-bg: #1e3a5f;
     --mobile-menu-text: white;
-}
-
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --link-color: #8d9bff;
-    --link-hover-color: #c0caff;
-
-    --potions-box-bg: rgba(46, 48, 79, 0.8);
-    --potions-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    --potions-name-color: #e0e0e0;
-    --note-text-color: #e0e0e0;
-    --highlight-text-color: #b8c0ff;
-    --section-title-color: #b8c0ff;
-    --section-title-underline: #6a9ac9;
-    --big-title-color: #ffcccc;
-
-    --mobile-menu-bg: #232946;
-    --mobile-menu-text: #e0e0e0;
 }
 
 body {
@@ -48,7 +32,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: background-color 0.5s ease, color 0.5s ease;
     overflow-x: hidden;
 }
 
@@ -62,6 +45,11 @@ a:hover {
     color: var(--link-hover-color);
 }
 
+/* --- Menu Latéral (Caché sur PC) --- */
+.mobile-menu-btn, .side-nav {
+    display: none; 
+}
+
 /* --- Top Page & Header --- */
 .top-page {
     background: url('../img/bg.png') center center / cover no-repeat;
@@ -69,11 +57,6 @@ a:hover {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    transition: background-image 0.5s ease;
-}
-
-body.dark-mode .top-page {
-    background-image: url('../img/bgsombre.png');
 }
 
 .header {
@@ -81,76 +64,38 @@ body.dark-mode .top-page {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    position: relative;
 }
 
 .header img.logo {
     width: 150px;
     height: auto;
-    transition: filter 0.5s ease;
 }
 
-/* --- Bouton Dark Mode --- */
-.header-right {
+/* --- Menu PC --- */
+.desktop-nav {
     display: flex;
-    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
 }
 
-.dark-mode-toggle {
-    position: relative;
-    width: 70px;
-    height: 40px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    overflow: hidden;
+.desktop-nav ul {
     display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.dark-mode-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+.desktop-nav a {
+    color: var(--nav-link-color);
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    transition: color 0.3s ease;
 }
 
-body.dark-mode .dark-mode-toggle {
-    background-color: #555;
-}
-
-.icon-light, .icon-dark {
-    font-size: 1.8em;
-    line-height: 1;
-    position: absolute;
-    top: 50%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.icon-light {
-    left: 10px;
-    color: #ffc107;
-    transform: translateY(-50%) translateX(0);
-    opacity: 1;
-}
-
-.icon-dark {
-    right: 10px;
-    color: #f8f9fa;
-    transform: translateY(-50%) translateX(30px);
-    opacity: 0;
-}
-
-body.dark-mode .icon-light {
-    transform: translateY(-50%) translateX(-30px);
-    opacity: 0;
-}
-
-body.dark-mode .icon-dark {
-    transform: translateY(-50%) translateX(0);
-    opacity: 1;
+.desktop-nav a:hover {
+    color: var(--nav-link-hover-color);
 }
 
 /* --- Titres --- */
@@ -169,7 +114,6 @@ body.dark-mode .icon-dark {
     font-weight: 100;
     text-align: center;
     margin: 0;
-    transition: color 0.5s ease;
 }
 
 .section-title {
@@ -180,7 +124,6 @@ body.dark-mode .icon-dark {
     text-align: center;
     margin: 50px 0 30px 0;
     color: var(--section-title-color);
-    transition: color 0.5s ease;
 }
 
 .section-title::before {
@@ -192,14 +135,12 @@ body.dark-mode .icon-dark {
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    transition: background-color 0.5s ease;
 }
 
 /* --- Accès rapide --- */
 .Acces-rapide {
     margin: 100px;
     background-color: var(--bg-color);
-    transition: background-color 0.5s ease;
 }
 
 .groupe1 {
@@ -247,7 +188,6 @@ body.dark-mode .icon-dark {
     padding: 5px 20px;
     box-sizing: border-box;
     text-align: center;
-    transition: background-color 0.5s ease;
 }
 
 .potion-name {
@@ -256,7 +196,6 @@ body.dark-mode .icon-dark {
     line-height: 1.2;
     margin: 5px 0;
     color: var(--potions-name-color);
-    transition: color 0.5s ease;
 }
 
 /* --- Note de prévention --- */
@@ -265,96 +204,99 @@ body.dark-mode .icon-dark {
     text-align: justify;
     line-height: 1.6;
     background-color: var(--bg-color);
-    transition: background-color 0.5s ease;
 }
 
 .prevention-text {
     font-size: 30px;
     color: var(--note-text-color);
-    transition: color 0.5s ease;
 }
 
 .prevention-text strong {
     color: var(--highlight-text-color);
-    transition: color 0.5s ease;
-}
-
-/* --- Menu Mobile (caché par défaut) --- */
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 35px;
-    color: var(--text-color);
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.mobile-nav {
-    display: none;
 }
 
 /* =========================================
    ADAPTATION TÉLÉPHONE (Responsive Design)
    ========================================= */
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
+@media (max-width: 900px) {
+    /* Cacher le menu PC */
+    .desktop-nav {
+        display: none; 
     }
 
-    /* On cache l'énorme bloc d'images pour le remplacer par le menu */
+    /* Cacher les tuiles d'accès rapide */
     .Acces-rapide {
         display: none; 
     }
 
-    /* Configuration du menu déroulant */
-    .mobile-nav {
+    /* Bouton Flèche fixé à gauche */
+    .mobile-menu-btn {
         display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
+        position: fixed;
+        top: 50%;
         left: 0;
-        width: 100%;
+        transform: translateY(-50%);
         background-color: var(--mobile-menu-bg);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        z-index: 999;
+        color: white;
+        border: none;
+        padding: 15px 10px;
+        border-radius: 0 5px 5px 0;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.3);
     }
 
-    .mobile-nav.active {
-        max-height: 300px; 
+    /* Panneau Latéral Coulissant */
+    .side-nav {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -260px; /* Caché hors de l'écran par défaut */
+        width: 260px;
+        height: 100vh;
+        background-color: var(--mobile-menu-bg);
+        z-index: 1001;
+        transition: left 0.4s ease;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+        padding-top: 60px;
+        box-sizing: border-box;
     }
 
-    .mobile-nav a {
-        color: var(--mobile-menu-text);
+    .side-nav.active {
+        left: 0; /* Menu ouvert */
+    }
+
+    .side-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .side-nav li a {
+        display: block;
         padding: 15px 20px;
-        text-align: center;
+        color: var(--mobile-menu-text);
+        text-decoration: none;
         font-size: 18px;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Ajustements des marges et tailles pour petit écran */
-    .top-page {
-        height: auto;
-        min-height: 40vh;
-    }
-    
-    .big-title {
-        font-size: 50px;
-    }
-    
-    .section-title {
-        font-size: 35px;
-        margin: 30px 0 20px 0;
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
     }
 
-    .all-potion {
-        margin: 40px 20px;
-    }
-    
-    .prevention-text {
-        font-size: 18px; /* Beaucoup plus lisible sur téléphone */
-    }
+    /* Ajustements des marges */
+    .top-page { height: auto; min-height: 40vh; }
+    .big-title { font-size: 50px; }
+    .section-title { font-size: 35px; margin: 30px 0 20px 0; }
+    .all-potion { margin: 40px 20px; }
+    .prevention-text { font-size: 18px; }
 }

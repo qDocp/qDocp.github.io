@@ -10,28 +10,35 @@
 </head>
 <body>
 
+    <!-- Bouton Flèche fixé sur mobile -->
+    <button id="mobileMenuOpen" class="mobile-menu-btn" aria-label="Ouvrir le menu">❯</button>
+
+    <!-- Menu Latéral pour Mobile -->
+    <nav id="sideNav" class="side-nav">
+        <button id="mobileMenuClose" class="close-btn" aria-label="Fermer le menu">❮</button>
+        <ul>
+            <li><a href="Pages/Explications_sur_les_potions.html">Explications sur les potions</a></li>
+            <li><a href="Pages/Presentation_de_Milo.html">Le personnage de Milo</a></li>
+            <li><a href="Pages/Obtention.html">Obtention</a></li>
+            <li><a href="Pages/Liste_de_potions.html">Liste des potions</a></li>
+        </ul>
+    </nav>
+
     <section class="top-page">
         <header class="header">
             <img src="img/logo.png" alt="Logo de l'échoppe de Milo" class="logo">
             
-            <!-- Bouton Menu Mobile -->
-            <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Ouvrir le menu">☰</button>
-            
-            <!-- Menu Mobile (caché sur PC) -->
-            <nav id="mobileNav" class="mobile-nav">
-                <a href="Pages/Explications_sur_les_potions.html">Explications sur les potions</a>
-                <a href="Pages/Presentation_de_Milo.html">Le personnage de Milo</a>
-                <a href="Pages/Obtention.html">Obtention</a>
-                <a href="Pages/Liste_de_potions.html">Liste des potions</a>
+            <!-- Menu PC -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="Pages/Explications_sur_les_potions.html">Explications sur les potions</a></li>
+                    <li><a href="Pages/Presentation_de_Milo.html">Le personnage de Milo</a></li>
+                    <li><a href="Pages/Obtention.html">Obtention</a></li>
+                    <li><a href="Pages/Liste_de_potions.html">Liste des potions</a></li>
+                </ul>
             </nav>
-
-            <div class="header-right">
-                <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <span class="icon-light">☀️</span>
-                    <span class="icon-dark">🌙</span>
-                </button>
-            </div>
         </header>
+        
         <div class="landing-page">
             <h1 class="big-title">Potions de l’échoppe de Milo</h1>
         </div>
