@@ -41,6 +41,8 @@ body.dark-mode {
     
     --info-box-bg: #2d3047;
     --info-box-border: #5a608d;
+    
+    /* ➔ CORRECTION ICI : Remplacement du jaune par le bleu d'origine */
     --info-box-h3-color: #b8c0ff; 
     
     --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
@@ -212,6 +214,28 @@ main {
     transition: color 0.5s ease, border-left-color 0.5s ease, text-shadow 0.5s ease;
 }
 
+.main-content h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: var(--info-box-h3-color);
+    transition: color 0.5s ease;
+}
+
+.main-content p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.main-content ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 1.5em;
+}
+
+.main-content ul li {
+    margin-bottom: 0.5em;
+}
+
 /* --- ENCADRÉS D'INFORMATIONS --- */
 .flex-boxes-container {
     display: flex;
@@ -246,37 +270,6 @@ body.dark-mode .rarity-icon {
     filter: drop-shadow(var(--rarity-icon-shadow));
 }
 
-.accordion-header {
-    margin-top: 0;
-    font-size: 1.4em;
-    color: var(--info-box-h3-color);
-    transition: color 0.5s ease;
-    margin-bottom: 15px;
-}
-
-.accordion-icon {
-    display: none; /* Flèche invisible sur PC */
-}
-
-.accordion-content {
-    max-height: none; /* Toujours visible sur PC */
-}
-
-.main-content p {
-    margin-bottom: 1em;
-    text-align: justify;
-}
-
-.main-content ul {
-    list-style: disc;
-    margin-left: 20px;
-    margin-bottom: 1.5em;
-}
-
-.main-content ul li {
-    margin-bottom: 0.5em;
-}
-
 /* --- FOOTER --- */
 footer {
     background: var(--footer-bg);
@@ -296,8 +289,13 @@ footer p {
 
 /* --- RESPONSIVE DESIGN (Tablettes et Mobiles) --- */
 @media (max-width: 900px) {
-    .page-header h1 { font-size: 1.8em; }
-    .info-box { max-width: 100%; }
+    .page-header h1 {
+        font-size: 1.8em;
+    }
+
+    .info-box {
+        max-width: 100%; 
+    }
 }
 
 @media (max-width: 768px) {
@@ -306,49 +304,34 @@ footer p {
         text-align: center;
         padding: 1em;
     }
+
     .header-left-column {
         width: 100%;
         justify-content: space-between;
         margin-bottom: 1em;
     }
+
     .page-header h1 {
         font-size: 1.8em;
         margin-bottom: 0.5em;
     }
-    .main-content { margin: 1em; padding: 1.5em; }
-    .main-content h2 { font-size: 1.6em; }
 
-    /* Mécanique Accordéon Uniquement sur Mobile */
-    .accordion-header {
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0; /* Enlève la marge si c'est fermé */
-        transition: margin-bottom 0.3s ease;
+    .main-content {
+        margin: 1em;
+        padding: 1.5em;
     }
-    .info-box.active .accordion-header {
-        margin-bottom: 15px; /* Remet la marge une fois ouvert */
-    }
-    .accordion-icon {
-        display: inline-block;
-        font-size: 0.8em;
-        transition: transform 0.3s ease;
-    }
-    .info-box.active .accordion-icon {
-        transform: rotate(180deg); /* La flèche tourne quand on ouvre */
-    }
-    .accordion-content {
-        max-height: 0; /* Masque le contenu */
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-    }
-    .info-box.active .accordion-content {
-        max-height: 1000px; /* Dévoile le contenu de façon fluide */
+
+    .main-content h2 {
+        font-size: 1.6em;
     }
 }
 
 @media (max-width: 480px) {
-    .home-link span { display: none; }
-    .logo-accueil { margin-right: 0; }
+    .home-link span {
+        display: none; 
+    }
+
+    .logo-accueil {
+        margin-right: 0;
+    }
 }
