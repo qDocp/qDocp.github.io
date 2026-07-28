@@ -161,12 +161,13 @@ body.dark-mode .logo-accueil {
 }
 
 .page-header h1 {
-    font-size: 2.5em;
+    font-size: 2em; /* Taille ajustée pour correspondre à l'autre page */
     color: var(--header-text-color);
     margin: 0;
     flex: auto;
     text-align: center;
-    transition: color 0.5s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre ajoutée pour être identique */
+    transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
 /* --- BOUTON DARK MODE D'ORIGINE --- */
@@ -518,7 +519,7 @@ body.dark-mode .pilt-box {
     display: block;
 }
 
-/* --- CLASSE ANTI-FOUC (Désactive les transitions au chargement) --- */
+/* --- CLASSE ANTI-FOUC --- */
 .no-transition,
 .no-transition * {
     transition: none !important;
