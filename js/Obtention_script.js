@@ -39,110 +39,56 @@ const allPotionsData = {
 let displayedUniqueCursedPotions = new Set();
 let displayedUniqueAngelicPotions = new Set();
 
+// NOUVELLE FONCTION ULTRA RAPIDE (0 lag)
 function getRandomPotion() {
-    const allPossiblePotions = [];
-
-    const availableCursedPotions = allPotionsData.cursed.filter(
-        p => !displayedUniqueCursedPotions.has(p)
-    );
-    const availableAngelicPotions = allPotionsData.angelic.filter(
-        p => !displayedUniqueAngelicPotions.has(p)
-    );
-
-    const totalCursed = allPotionsData.cursed.length;
-    const totalAngelic = allPotionsData.angelic.length;
-
-    const remainingCursedWeight = availableCursedPotions.length > 0
-        ? rarities.find(r => r.name === 'cursed').probability * (availableCursedPotions.length / totalCursed)
-        : 0;
-    const remainingAngelicWeight = availableAngelicPotions.length > 0
-        ? rarities.find(r => r.name === 'angelic').probability * (availableAngelicPotions.length / totalAngelic)
-        : 0;
-
-    let weightedPotions = [];
+    const availablePotions = [];
+    let totalWeight = 0;
 
     for (const rarityKey in allPotionsData) {
-        if (rarityKey !== 'cursed' && rarityKey !== 'angelic') {
-            const rarityInfo = rarities.find(r => r.name === rarityKey);
-            allPotionsData[rarityKey].forEach(effectName => {
-                for (let i = 0; i < rarityInfo.probability; i++) {
-                    weightedPotions.push({
-                        effect: effectName,
-                        imageName: effectName + '.png',
-                        rarity: rarityKey
-                    });
-                }
+        const rarityInfo = rarities.find(r => r.name === rarityKey);
+        const baseWeight = rarityInfo.probability;
+
+        allPotionsData[rarityKey].forEach(effectName => {
+            if (rarityKey === 'cursed' && displayedUniqueCursedPotions.has(effectName)) return;
+            if (rarityKey === 'angelic' && displayedUniqueAngelicPotions.has(effectName)) return;
+
+            availablePotions.push({
+                effect: effectName,
+                imageName: effectName + '.png',
+                rarity: rarityKey,
+                weight: baseWeight
             });
-        }
-    }
-    if (remainingCursedWeight > 0) {
-        availableCursedPotions.forEach(effectName => {
-            for (let i = 0; i < Math.max(1, Math.round(remainingCursedWeight)); i++) {
-                weightedPotions.push({
-                    effect: effectName,
-                    imageName: effectName + '.png',
-                    rarity: 'cursed'
-                });
-            }
+            totalWeight += baseWeight;
         });
     }
-    if (remainingAngelicWeight > 0) {
-        availableAngelicPotions.forEach(effectName => {
-            for (let i = 0; i < Math.max(1, Math.round(remainingAngelicWeight)); i++) {
-                weightedPotions.push({
-                    effect: effectName,
-                    imageName: effectName + '.png',
-                    rarity: 'angelic'
-                });
-            }
-        });
-    }
-    if (weightedPotions.length === 0) {
-        console.warn("Plus de potions disponibles pour le tirage dans cette session ou aucune potion n'est définie.");
+
+    if (availablePotions.length === 0) {
+        console.warn("Plus de potions disponibles.");
         return null;
     }
 
-    const randomIndex = Math.floor(Math.random() * weightedPotions.length);
-    const selectedPotion = weightedPotions[randomIndex];
-
-    if (selectedPotion.rarity === 'cursed') {
-        displayedUniqueCursedPotions.add(selectedPotion.effect);
-    } else if (selectedPotion.rarity === 'angelic') {
-        displayedUniqueAngelicPotions.add(selectedPotion.effect);
-    }
-
-    return selectedPotion;
-}
-
-function generateRarity() {
-    const totalProbability = rarities.reduce((sum, r) => sum + r.probability, 0);
-    let randomNum = Math.random() * totalProbability;
-    let currentProbability = 0;
-
-    for (const rarity of rarities) {
-        currentProbability += rarity.probability;
-        if (randomNum <= currentProbability) {
-            return rarity;
+    let randomNum = Math.random() * totalWeight;
+    for (const potion of availablePotions) {
+        randomNum -= potion.weight;
+        if (randomNum <= 0) {
+            if (potion.rarity === 'cursed') displayedUniqueCursedPotions.add(potion.effect);
+            if (potion.rarity === 'angelic') displayedUniqueAngelicPotions.add(potion.effect);
+            return potion;
         }
     }
-    return rarities[0];
+    return availablePotions[availablePotions.length - 1];
 }
 
 function createPotionCard() {
     const potion = getRandomPotion();
-    if (!potion) {
-        console.error("Impossible de créer une carte: aucune potion disponible dans la liste.");
-        return null;
-    }
+    if (!potion) return null;
 
     const potionRarityInfo = rarities.find(r => r.name === potion.rarity);
     const adjective = potionRarityInfo ? potionRarityInfo.adjective : 'Potion ';
-
-    const effectName = potion.effect;
-    const cardName = `${adjective} ${effectName}`;
+    const cardName = `${adjective} ${potion.effect}`;
 
     const cardContainer = document.createElement('div');
-    cardContainer.classList.add('card-container');
+    cardContainer.classList.add('card-container'); // On n'ajoute plus la classe ici directement
 
     const frontFace = document.createElement('div');
     frontFace.classList.add('potion-card');
@@ -158,7 +104,6 @@ function createPotionCard() {
     });
 
     cardContainer.appendChild(frontFace);
-
     return cardContainer;
 }
 
@@ -187,30 +132,25 @@ function handlePurchase(cardContainer) {
 
 function populateShop(numCards = 5) {
     const shopContainer = document.getElementById('potionShop');
-    if (!shopContainer) {
-        console.error("Le conteneur de la boutique (#potionShop) n'a pas été trouvé.");
-        return;
-    }
+    if (!shopContainer) return;
 
     shopContainer.innerHTML = '';
-
-    displayedUniqueCursedPotions = new Set();
-    displayedUniqueAngelicPotions = new Set();
+    displayedUniqueCursedPotions.clear();
+    displayedUniqueAngelicPotions.clear();
 
     const totalUniquePotionTypes = Object.values(allPotionsData).flat().length;
     const cardsToGenerate = Math.min(numCards, totalUniquePotionTypes);
-
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < cardsToGenerate; i++) {
         const cardContainer = createPotionCard();
         if (cardContainer) {
             setTimeout(() => {
-                cardContainer.querySelector('.potion-card')?.classList.add('flip-in');
+                // L'animation est ajoutée sur le conteneur, pas sur la carte, pour ne pas faire bugger la carte graphique
+                cardContainer.classList.add('flip-in');
             }, i * 100);
             fragment.appendChild(cardContainer);
         } else {
-            console.warn(`Moins de cartes générées que demandé (${i} au lieu de ${cardsToGenerate}) car plus de potions disponibles ou un problème est survenu.`);
             break;
         }
     }
@@ -247,7 +187,5 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshButton.addEventListener('click', () => {
             populateShop();
         });
-    } else {
-        console.warn("Bouton avec l'ID 'refreshPotions' non trouvé. La fonction d'actualisation manuelle pourrait ne pas fonctionner.");
     }
 });

@@ -257,15 +257,19 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     justify-content: center;
     gap: 50px;
     max-width: 100%;
-    perspective: 1000px;
+    perspective: 1000px; /* Perspective placée sur le conteneur pour la 3D */
 }
 
+/* L'animation d'apparition est maintenant placée sur le conteneur de la carte pour éviter le conflit */
 .card-container {
     width: 220px;
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-out;
-    transform-origin: center center;
+    opacity: 0; /* Caché au départ */
+    will-change: transform, opacity; /* Indique au navigateur d'optimiser l'animation */
+}
+
+.card-container.flip-in {
+    animation: flipIn 0.6s ease-out forwards;
 }
 
 .potion-card.purchased-effect {
@@ -293,7 +297,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     padding: 20px;
     text-align: center;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.5s ease, border-color 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.5s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -301,10 +305,6 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     color: #f0f0f0;
 }
 
@@ -342,19 +342,6 @@ body.dark-mode .dark-mode-toggle .icon-dark {
 .rarity.divine { background-color: var(--color-divine); color: black; }
 .rarity.cursed { background-color: var(--color-cursed); color: white; }
 .rarity.angelic { background-color: var(--color-angelic); color: black; }
-
-.potion-card.back-face {
-    background-color: #333;
-    color: white;
-    transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    font-weight: bold;
-    font-family: 'Cinzel', serif;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
 
 button {
     background-color: var(--color-button-primary);
@@ -444,7 +431,6 @@ footer p {
 
     .card-container {
         width: 180px;
-        min-width: 180px;
     }
     
     .potion-card {
@@ -482,7 +468,6 @@ footer p {
 
     .card-container {
         width: 85%;
-        min-width: unset;
     }
     
     .shop-container {
@@ -504,16 +489,6 @@ footer p {
     }
 }
 
-.rarity-icon {
-    width: 18px;
-    height: 18px;
-    transition: filter 0.5s ease;
-}
-
-body.dark-mode .rarity-icon {
-    filter: drop-shadow(var(--rarity-icon-shadow));
-}
-
 @keyframes flipIn {
     0% {
         opacity: 0;
@@ -527,10 +502,6 @@ body.dark-mode .rarity-icon {
         opacity: 1;
         transform: rotateY(0deg) scale(1);
     }
-}
-
-.potion-card.flip-in {
-    animation: flipIn 0.6s ease-out forwards;
 }
 
 .no-transition,
