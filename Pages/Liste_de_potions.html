@@ -6,18 +6,26 @@
     <title>Liste des potions</title>
     <link rel="stylesheet" href="../css/Liste_styles.css">
     <link rel="icon" type="image/png" href="../img/logo.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
-    <header class="main-header">
-        <a href="../index.html" class="home-link">
-            <img src="../img/logo.png" alt="Logo de retour à l'accueil" class="logo-accueil">
-            <span>Accueil</span>
-        </a>
-        <button id="darkModeToggle" class="dark-mode-toggle">
-            <span class="icon-light">☀️</span>
-            <span class="icon-dark">🌙</span>
-        </button>
+    <header class="page-header">
+        <div class="header-left">
+            <a href="../index.html" class="home-link">
+                <img src="../img/logo.png" alt="Logo Retour" class="logo-accueil">
+                <span>Retour</span>
+            </a>
+        </div>
+        
+        <h1>Liste des potions</h1>
+        
+        <div class="header-right">
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Activer le mode sombre">
+                <span class="icon-light">☀️</span>
+                <span class="icon-dark">🌙</span>
+            </button>
+        </div>
     </header>
 
     <div class="main-content-wrapper">
@@ -464,6 +472,10 @@
 
         </div>
     </div>
+    
+    <footer>
+        <p>🦊-- Wiki de potions L'échoppe de Milo --🦊</p>
+    </footer>
     <script src="../js/Liste_script.js"></script>
 </body>
 </html>
