@@ -356,3 +356,9 @@ body.dark-mode .icon-dark {
         font-size: 18px; 
     }
 }
+
+/* --- CLASSE ANTI-FLASH POUR LE MODE SOMBRE --- */
+.no-transition,
+.no-transition * {
+    transition: none !important;
+}
