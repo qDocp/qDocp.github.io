@@ -82,7 +82,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .header-left-column {
@@ -109,7 +109,7 @@ body {
     height: 40px;
     margin-right: 10px;
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
-    transition: filter 0.5s ease;
+    /* Transition retirée car trop lourde */
 }
 
 body.dark-mode .logo-accueil {
@@ -124,7 +124,7 @@ body.dark-mode .logo-accueil {
     text-align: center;
     flex-grow: 1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    transition: color 0.5s ease, text-shadow 0.5s ease;
+    transition: color 0.5s ease; /* text-shadow retiré de la transition */
 }
 
 .dark-mode-toggle {
@@ -217,7 +217,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    transition: background-color 0.5s ease, border-color 0.5s ease;
+    /* Fondu retiré ici car image de fond = gros lag */
 }
 
 .info-box {
@@ -257,15 +257,14 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     justify-content: center;
     gap: 50px;
     max-width: 100%;
-    perspective: 1000px; /* Perspective placée sur le conteneur pour la 3D */
+    perspective: 1000px;
 }
 
-/* L'animation d'apparition est maintenant placée sur le conteneur de la carte pour éviter le conflit */
 .card-container {
     width: 220px;
     position: relative;
-    opacity: 0; /* Caché au départ */
-    will-change: transform, opacity; /* Indique au navigateur d'optimiser l'animation */
+    opacity: 0; 
+    will-change: transform, opacity;
 }
 
 .card-container.flip-in {
@@ -297,7 +296,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     padding: 20px;
     text-align: center;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.5s ease;
+    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out; /* Fondus supprimés, seul le survol s'anime */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -398,7 +397,7 @@ footer {
     padding: 1.5em 0;
     margin-top: auto;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 footer p {
@@ -487,6 +486,16 @@ footer p {
     .buy-button {
         width: 100%;
     }
+}
+
+.rarity-icon {
+    width: 18px;
+    height: 18px;
+    /* Transition retirée car trop lourde avec drop-shadow */
+}
+
+body.dark-mode .rarity-icon {
+    filter: drop-shadow(var(--rarity-icon-shadow));
 }
 
 @keyframes flipIn {
