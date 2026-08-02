@@ -7,23 +7,17 @@
     --page-header-text: white;
     --home-link-color: white;
     --home-link-hover-color: #a0c4ff;
-    
     --main-content-bg: white;
     --main-content-shadow: rgba(0, 0, 0, 0.1);
     --article-h2-color: #1e3a5f;
     --article-h2-border: #a0c4ff;
     --section-border-bottom: #ddd;
-    
     --footer-bg: #1e3a5f;
     --footer-text: white;
-    
     --info-box-bg: #e3eefc;
     --info-box-border: #3b82f6;
     --info-box-h3-color: #1e3a5f;
-    
     --rarity-icon-shadow: none;
-
-    /* Variables du bouton Mode Sombre importées */
     --toggle-bg-light: #ccc;
     --toggle-bg-dark: #555;
     --toggle-shadow-light: rgba(0,0,0,0.2);
@@ -36,28 +30,22 @@
 }
 
 body.dark-mode {
-    /* Mêmes couleurs sombres (noir/gris/cyan) que la page Milo ! */
     --bg-color: #121212;
     --text-color: #e0e0e0;
-    
     --page-header-bg: #1a1a1a;
     --page-header-text: #f0f0f0;
     --home-link-color: #e0e0e0;
     --home-link-hover-color: #9fe6b8;
-    
     --main-content-bg: #1f1f1f;
     --main-content-shadow: rgba(0, 0, 0, 0.3);
     --article-h2-color: #9fe6b8;
     --article-h2-border: #333;
     --section-border-bottom: #333;
-    
     --footer-bg: #1a1a1a;
     --footer-text: #f0f0f0;
-    
     --info-box-bg: #2a2a2a;
     --info-box-border: #444;
     --info-box-h3-color: #8be0ff; 
-    
     --rarity-icon-shadow: 0 0 10px rgba(255, 234, 0, 0.8);
 }
 
@@ -74,7 +62,6 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* --- HEADER --- */
 .page-header {
     background: var(--page-header-bg);
     color: var(--page-header-text);
@@ -137,7 +124,6 @@ body.dark-mode .logo-accueil {
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
-/* --- BOUTON DARK MODE D'ORIGINE (Importé de Milo) --- */
 #darkModeToggle {
     position: relative;
     width: 70px;
@@ -204,7 +190,6 @@ body.dark-mode #darkModeToggle .icon-dark {
     color: var(--icon-dark-color-active);
 }
 
-/* --- CONTENU PRINCIPAL --- */
 main {
     flex-grow: 1;
 }
@@ -242,7 +227,6 @@ main {
     transition: color 0.5s ease, border-left-color 0.5s ease, text-shadow 0.5s ease;
 }
 
-/* --- ENCADRÉS D'INFORMATIONS --- */
 .flex-boxes-container {
     display: flex;
     flex-wrap: wrap;
@@ -307,7 +291,6 @@ body.dark-mode .rarity-icon {
     margin-bottom: 0.5em;
 }
 
-/* --- FOOTER --- */
 footer {
     background: var(--footer-bg);
     color: var(--footer-text);
@@ -324,7 +307,6 @@ footer p {
     letter-spacing: 0.5px;
 }
 
-/* --- RESPONSIVE DESIGN (Tablettes et Mobiles) --- */
 @media (max-width: 900px) {
     .page-header h1 { font-size: 1.8em; }
     .info-box { max-width: 100%; }
@@ -349,7 +331,6 @@ footer p {
     .main-content { margin: 1em; padding: 1.5em; }
     .main-content h2 { font-size: 1.6em; }
 
-    /* Mécanique Accordéon Uniquement sur Mobile */
     .accordion-header {
         cursor: pointer;
         display: flex;
@@ -383,7 +364,6 @@ footer p {
     .logo-accueil { margin-right: 10px; }
 }
 
-/* --- CLASSE ANTI-FOUC (Désactive les transitions au chargement) --- */
 .no-transition,
 .no-transition * {
     transition: none !important;
