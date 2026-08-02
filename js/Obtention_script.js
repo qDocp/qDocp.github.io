@@ -114,7 +114,6 @@ function getRandomPotion() {
     return selectedPotion;
 }
 
-
 function generateRarity() {
     const totalProbability = rarities.reduce((sum, r) => sum + r.probability, 0);
     let randomNum = Math.random() * totalProbability;
@@ -163,6 +162,12 @@ function createPotionCard() {
     return cardContainer;
 }
 
+function playPurchaseSound() {
+    const audio = new Audio('../audio/purchase.mp3');
+    audio.volume = 0.5;
+    audio.play().catch(e => console.error("Erreur lors de la lecture du son d'achat:", e));
+}
+
 function handlePurchase(cardContainer) {
     const frontFace = cardContainer.querySelector('.potion-card');
     if (frontFace) {
@@ -176,6 +181,8 @@ function handlePurchase(cardContainer) {
         buyButton.style.backgroundColor = '#6c757d';
         buyButton.style.cursor = 'not-allowed';
     }
+
+    playPurchaseSound();
 }
 
 function populateShop(numCards = 5) {
@@ -211,6 +218,28 @@ function populateShop(numCards = 5) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    body.classList.add('no-transition');
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+    }
+
+    setTimeout(() => {
+        body.classList.remove('no-transition');
+    }, 50);
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        });
+    }
+
     populateShop();
 
     const refreshButton = document.getElementById('refreshPotions');
@@ -222,26 +251,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn("Bouton avec l'ID 'refreshPotions' non trouvé. La fonction d'actualisation manuelle pourrait ne pas fonctionner.");
     }
 });
-
-function handlePurchase(cardContainer) {
-    const frontFace = cardContainer.querySelector('.potion-card');
-    if (frontFace) {
-        frontFace.classList.add('purchased-effect');
-    }
-
-    const buyButton = cardContainer.querySelector('.buy-button');
-    if (buyButton) {
-        buyButton.disabled = true;
-        buyButton.textContent = 'Acheté !';
-        buyButton.style.backgroundColor = '#6c757d';
-        buyButton.style.cursor = 'not-allowed';
-    }
-
-    playPurchaseSound();
-}
-
-function playPurchaseSound() {
-    const audio = new Audio('../audio/purchase.mp3');
-    audio.volume = 0.5;
-    audio.play().catch(e => console.error("Erreur lors de la lecture du son d'achat:", e));
-}

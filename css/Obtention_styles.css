@@ -23,25 +23,26 @@
     --color-border-card: #7f8c8d;
     --color-box-bg: #2c3e50;
     --color-border-box: #4a6572;
+    --info-box-bg: #D9D9D9;
     --color-button-primary: #28a745;
     --color-button-primary-hover: #218838;
     --color-text-button: white;
 }
 
 body.dark-mode {
-    --bg-color: #1a1a2e;
-    --text-color: #000000;
-    --page-header-bg: #232946;
-    --page-header-text: #e0e0e0;
-    --home-link-color: #b8c0ff;
-    --home-link-hover-color: #c0caff;
-    --main-content-bg: #2d3047;
-    --main-content-shadow: rgba(0, 0, 0, 0.4);
-    --article-h2-color: #b8c0ff;
-    --article-h2-border: #5a608d;
-    --section-border-bottom: #4a4a6e;
-    --footer-bg: #232946;
-    --footer-text: #e0e0e0;
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --page-header-bg: #1a1a1a;
+    --page-header-text: #f0f0f0;
+    --home-link-color: #e0e0e0;
+    --home-link-hover-color: #9fe6b8;
+    --main-content-bg: #1f1f1f;
+    --main-content-shadow: rgba(0, 0, 0, 0.3);
+    --article-h2-color: #9fe6b8;
+    --article-h2-border: #333;
+    --section-border-bottom: #333;
+    --footer-bg: #1a1a1a;
+    --footer-text: #f0f0f0;
     --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
     --color-rare: #4dabf7;
     --color-epic: #a943e0;
@@ -49,13 +50,13 @@ body.dark-mode {
     --color-divine: #ffe082;
     --color-cursed: #ef5350;
     --color-angelic: #90caf9;
-    --color-card-bg: #2d3047;
-    --color-border-card: #5a608d;
-    --color-box-bg: #1a1a2e;
-    --color-border-box: #424874;
+    --color-card-bg: #1f1f1f;
+    --color-border-card: #444;
+    --color-box-bg: #1a1a1a;
+    --color-border-box: #333;
+    --info-box-bg: #2a2a2a;
     --color-button-primary: #0056b3;
     --color-button-primary-hover: #004085;
-    --info-box: #74FDFF;
 }
 
 body {
@@ -158,18 +159,19 @@ body.dark-mode .logo-accueil {
     transition: transform 0.3s ease, opacity 0.3s ease;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
 }
 
 .dark-mode-toggle .icon-light {
     left: 10px;
     color: #ffc107;
+    transform: translateY(-50%) translateX(0);
     opacity: 1;
 }
 
 .dark-mode-toggle .icon-dark {
     right: 10px;
     color: #6c757d;
+    transform: translateY(-50%) translateX(30px);
     opacity: 0;
 }
 
@@ -215,10 +217,11 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .info-box {
-    background-color: #D9D9D9;
+    background-color: var(--info-box-bg);
     border: 2px solid var(--color-border-box);
     border-radius: 15px;
     padding: 30px;
@@ -228,6 +231,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .refresh-button {
@@ -442,10 +446,12 @@ footer p {
         width: 180px;
         min-width: 180px;
     }
+    
     .potion-card {
         padding: 15px;
         min-height: 150px;
     }
+    
     .shop-container {
         gap: 30px;
     }
@@ -478,6 +484,7 @@ footer p {
         width: 85%;
         min-width: unset;
     }
+    
     .shop-container {
         flex-direction: row;
         justify-content: center;
@@ -486,10 +493,12 @@ footer p {
         box-sizing: border-box;
         gap: 20px;
     }
+    
     button {
         width: 90%;
         font-size: 1em;
     }
+    
     .buy-button {
         width: 100%;
     }
@@ -522,4 +531,9 @@ body.dark-mode .rarity-icon {
 
 .potion-card.flip-in {
     animation: flipIn 0.6s ease-out forwards;
+}
+
+.no-transition,
+.no-transition * {
+    transition: none !important;
 }
