@@ -19,25 +19,24 @@
 }
 
 body.dark-mode {
-    --bg-color: #1a1a2e;
+    --bg-color: #121212;
     --text-color: #e0e0e0;
-    --card-bg: #2e304f;
-    --card-border: #4a4a6e;
-    --sidebar-bg: #232946;
-    --sidebar-shadow: rgba(0, 0, 0, 0.4);
-    --category-bg: #3c405d;
-    --category-hover-bg: #4f547a;
+    --card-bg: #1f1f1f;
+    --card-border: #444;
+    --sidebar-bg: #1a1a1a;
+    --sidebar-shadow: rgba(0, 0, 0, 0.3);
+    --category-bg: #2a2a2a;
+    --category-hover-bg: #333;
     --category-hover-text: #f0f0f0;
-    --category-active-bg: #5a608d;
+    --category-active-bg: #444;
     --category-active-text: #ffffff;
-    --main-title-color: #b8c0ff;
-    --home-link-color: #8d9bff;
-    --home-link-hover-color: #c0caff;
+    --main-title-color: #9fe6b8;
+    --home-link-color: #8be0ff;
+    --home-link-hover-color: #a0c4ff;
     --rare-text-color: #b0b0b0;
-    --container-bg: #2d3047;
-    --container-shadow: rgba(0, 0, 0, 0.4);
+    --container-bg: #1a1a1a;
+    --container-shadow: rgba(0, 0, 0, 0.3);
 }
-
 
 body {
     margin: 0;
@@ -343,3 +342,7 @@ h1 {
     display: none;
 }
 
+.no-transition,
+.no-transition * {
+    transition: none !important;
+}

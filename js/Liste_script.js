@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Constantes ---
-    const DARK_MODE_KEY = 'darkMode';
     const LAST_CATEGORY_KEY = 'lastCategory';
-    const DARK_MODE_CLASS = 'dark-mode';
     const DEFAULT_CATEGORY = 'positives';
 
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -12,29 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const potionCategories = document.querySelectorAll('.potions-category');
     const currentCategoryTitle = document.getElementById('current-category-title');
 
-    function updateMode(isDarkMode) {
-        if (isDarkMode) {
-            body.classList.add(DARK_MODE_CLASS);
-        } else {
-            body.classList.remove(DARK_MODE_CLASS);
-        }
-        localStorage.setItem(DARK_MODE_KEY, isDarkMode);
+    body.classList.add('no-transition');
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
     }
 
-    let initialDarkMode = false;
-    const savedDarkMode = localStorage.getItem(DARK_MODE_KEY);
+    setTimeout(() => {
+        body.classList.remove('no-transition');
+    }, 50);
 
-    if (savedDarkMode !== null) {
-        initialDarkMode = savedDarkMode === 'true';
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        initialDarkMode = true;
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        });
     }
-    updateMode(initialDarkMode);
-
-    darkModeToggle.addEventListener('click', () => {
-        const isDarkMode = body.classList.contains(DARK_MODE_CLASS);
-        updateMode(!isDarkMode);
-    });
 
     function showCategory(categoryToShow) {
         potionCategories.forEach(categoryDiv => {
