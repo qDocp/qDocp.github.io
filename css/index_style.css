@@ -5,7 +5,6 @@
     --text-color: #333;
     --link-color: #3b82f6;
     --link-hover-color: #0d284a;
-
     --potions-box-bg: rgba(255, 255, 255, 0.8);
     --potions-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     --potions-name-color: #333;
@@ -14,29 +13,8 @@
     --section-title-color: #333;
     --section-title-underline: #ADD981;
     --big-title-color: darkred;
-    
-    /* Variables exclusives au menu mobile */
     --mobile-menu-bg: #1e3a5f;
     --mobile-menu-text: white;
-}
-
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --link-color: #8d9bff;
-    --link-hover-color: #c0caff;
-
-    --potions-box-bg: rgba(46, 48, 79, 0.8);
-    --potions-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    --potions-name-color: #e0e0e0;
-    --note-text-color: #e0e0e0;
-    --highlight-text-color: #b8c0ff;
-    --section-title-color: #b8c0ff;
-    --section-title-underline: #6a9ac9;
-    --big-title-color: #ffcccc;
-
-    --mobile-menu-bg: #232946;
-    --mobile-menu-text: #e0e0e0;
 }
 
 body {
@@ -62,12 +40,10 @@ a:hover {
     color: var(--link-hover-color);
 }
 
-/* --- Menu Latéral (Caché sur PC) --- */
 .mobile-menu-btn, .side-nav {
     display: none; 
 }
 
-/* --- Top Page & Header --- */
 .top-page {
     background: url('../img/bg.png') center center / cover no-repeat;
     height: 51vh;
@@ -75,10 +51,6 @@ a:hover {
     display: flex;
     flex-direction: column;
     transition: background-image 0.5s ease;
-}
-
-body.dark-mode .top-page {
-    background-image: url('../img/bgsombre.png');
 }
 
 .header {
@@ -93,70 +65,6 @@ body.dark-mode .top-page {
     height: auto;
 }
 
-/* --- BOUTON DARK MODE --- */
-.header-right {
-    display: flex;
-    align-items: center;
-}
-
-.dark-mode-toggle {
-    position: relative;
-    width: 70px;
-    height: 40px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-}
-
-.dark-mode-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .dark-mode-toggle {
-    background-color: #555;
-}
-
-.icon-light, .icon-dark {
-    font-size: 1.8em;
-    line-height: 1;
-    position: absolute;
-    top: 50%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.icon-light {
-    left: 10px;
-    color: #ffc107;
-    transform: translateY(-50%) translateX(0);
-    opacity: 1;
-}
-
-.icon-dark {
-    right: 10px;
-    color: #f8f9fa;
-    transform: translateY(-50%) translateX(30px);
-    opacity: 0;
-}
-
-body.dark-mode .icon-light {
-    transform: translateY(-50%) translateX(-30px);
-    opacity: 0;
-}
-
-body.dark-mode .icon-dark {
-    transform: translateY(-50%) translateX(0);
-    opacity: 1;
-}
-
-/* --- Titres --- */
 .landing-page {
     padding: 20px 50px;
     flex-grow: 1;
@@ -198,7 +106,6 @@ body.dark-mode .icon-dark {
     transition: background-color 0.5s ease;
 }
 
-/* --- Accès rapide --- */
 .Acces-rapide {
     margin: 100px;
     background-color: var(--bg-color);
@@ -262,7 +169,6 @@ body.dark-mode .icon-dark {
     transition: color 0.5s ease;
 }
 
-/* --- Note de prévention --- */
 .all-potion {
     margin: 100px;
     text-align: justify;
@@ -282,17 +188,11 @@ body.dark-mode .icon-dark {
     transition: color 0.5s ease;
 }
 
-/* =========================================
-   ADAPTATION TÉLÉPHONE (Responsive Design)
-   ========================================= */
 @media (max-width: 900px) {
-
-    /* Cacher les tuiles d'accès rapide */
     .Acces-rapide {
         display: none; 
     }
 
-    /* Bouton Flèche fixé à gauche */
     .mobile-menu-btn {
         display: flex;
         position: fixed;
@@ -310,12 +210,11 @@ body.dark-mode .icon-dark {
         box-shadow: 2px 0 5px rgba(0,0,0,0.3);
     }
 
-    /* Panneau Latéral Coulissant */
     .side-nav {
         display: block;
         position: fixed;
         top: 0;
-        left: -260px; /* Caché hors de l'écran par défaut */
+        left: -260px;
         width: 260px;
         height: 100vh;
         background-color: var(--mobile-menu-bg);
@@ -327,7 +226,7 @@ body.dark-mode .icon-dark {
     }
 
     .side-nav.active {
-        left: 0; /* Menu ouvert */
+        left: 0;
     }
 
     .side-nav ul {
@@ -356,10 +255,21 @@ body.dark-mode .icon-dark {
         cursor: pointer;
     }
 
-    /* Ajustements des marges */
-    .top-page { height: auto; min-height: 40vh; }
-    .big-title { font-size: 50px; }
-    .section-title { font-size: 35px; margin: 30px 0 20px 0; }
-    .all-potion { margin: 40px 20px; }
-    .prevention-text { font-size: 18px; }
+    .top-page { 
+        height: auto; 
+        min-height: 40vh; 
+    }
+    .big-title { 
+        font-size: 50px; 
+    }
+    .section-title { 
+        font-size: 35px; 
+        margin: 30px 0 20px 0; 
+    }
+    .all-potion { 
+        margin: 40px 20px; 
+    }
+    .prevention-text { 
+        font-size: 18px; 
+    }
 }
