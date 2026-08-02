@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #f7f7f7;
+    --bg-color: #f0f0f0;
     --text-color: #333;
     --page-header-bg: #1e3a5f;
     --page-header-text: white;
@@ -108,7 +108,7 @@ body {
     height: 40px;
     width: auto;
     margin-right: 10px;
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+    /* Ombre supprimée en mode clair */
 }
 
 body.dark-mode .logo-accueil {
@@ -196,9 +196,10 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     flex-grow: 1;
     padding: 30px;
     gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
     width: 100%;
+    /* Remplacement du max-width rigide pour utiliser tout l'espace dispo */
+    max-width: 1600px; 
+    margin: 0 auto;
     box-sizing: border-box;
     align-items: flex-start;
 }
@@ -279,7 +280,8 @@ body.dark-mode .category-menu a.active {
     box-shadow: 0 4px 8px var(--container-shadow);
     padding: 30px;
     text-align: center;
-    flex-grow: 1;
+    /* Prend tout l'espace restant après la sidebar */
+    flex-grow: 1; 
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -446,7 +448,6 @@ footer p {
         padding: 10px 0;
     }
 
-    /* Le menu se met à l'horizontale sur mobile */
     .category-menu ul {
         flex-direction: row;
         flex-wrap: wrap;
