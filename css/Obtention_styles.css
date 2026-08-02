@@ -134,6 +134,7 @@ body.dark-mode .logo-accueil {
     transition: color 0.5s ease;
 }
 
+/* === CORRECTION DU BOUTON MODE SOMBRE ICI === */
 .dark-mode-toggle {
     position: relative;
     width: 70px;
@@ -144,6 +145,8 @@ body.dark-mode .logo-accueil {
     cursor: pointer;
     overflow: hidden;
     padding: 0;
+    margin: 0; /* Annule la marge des autres boutons */
+    font-size: 16px; /* Annule l'agrandissement des autres boutons */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -255,6 +258,29 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     margin: 0;
 }
 
+button {
+    background-color: var(--color-button-primary);
+    color: var(--color-text-button);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .refresh-button {
     background-color: var(--color-button-primary);
     color: var(--color-text-button);
@@ -265,6 +291,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     font-size: 1.1em;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0; /* Correction de la marge héritée ici aussi */
 }
 
 .refresh-button:hover {
@@ -363,29 +390,6 @@ body.dark-mode .dark-mode-toggle .icon-dark {
 .rarity.cursed { background-color: var(--color-cursed); color: white; }
 .rarity.angelic { background-color: var(--color-angelic); color: black; }
 
-button {
-    background-color: var(--color-button-primary);
-    color: var(--color-text-button);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: var(--color-button-primary-hover);
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
 .buy-button {
     background-color: var(--color-button-primary);
     color: var(--color-text-button);
@@ -482,10 +486,8 @@ footer p {
         font-size: 1.5em;
     }
 
-    /* Le display:none sur ".home-link span" a été retiré ici ! */
-
     .logo-accueil {
-        margin-right: 10px; /* On remet la marge comme sur les autres pages */
+        margin-right: 10px;
     }
 
     .main-content {
