@@ -444,7 +444,7 @@ footer p {
     .page-header h1 {
         width: 100%;
         order: 3; 
-        font-size: 1.8em; /* Aligné sur la page Explications */
+        font-size: 1.8em; 
         margin-top: 10px;
         margin-bottom: 0.5em;
     }
@@ -482,12 +482,10 @@ footer p {
         font-size: 1.5em;
     }
 
-    .home-link span {
-        display: none;
-    }
+    /* Le display:none sur ".home-link span" a été retiré ici ! */
 
     .logo-accueil {
-        margin-right: 0;
+        margin-right: 10px; /* On remet la marge comme sur les autres pages */
     }
 
     .main-content {
@@ -500,7 +498,7 @@ footer p {
     }
 
     .shop-container {
-        flex-direction: column; /* Sur petit téléphone, on empile les cartes pour la clarté */
+        flex-direction: column;
         align-items: center;
         gap: 25px;
     }
