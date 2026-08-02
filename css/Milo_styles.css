@@ -5,33 +5,26 @@
     --text-color: #333;
     --link-color: #3b82f6;
     --link-hover-color: #0d284a;
-
     --header-bg: #1e3a5f;
     --header-text-color: white;
     --home-link-color: white;
     --home-link-hover-color: #a0c4ff;
     --footer-bg: #1e3a5f;
     --footer-text-color: white;
-
     --quote-box-bg: #e3eefc;
     --quote-box-border: #3b82f6;
     --quote-box-cite-color: #555;
-
     --wiki-layout-gap: 30px;
-
     --sidebar-bg: white;
     --sidebar-shadow: rgba(0,0,0,0.1);
     --sidebar-h2-color: #1e3a5f;
     --sidebar-h2-border: #eee;
     --sidebar-strong-color: #555;
-
     --rarity-display-color: #FFD700;
-
     --stats-box-bg: #e0f2fe;
     --stats-box-shadow: rgba(0,0,0,0.1);
     --stats-box-h3-color: #1e3a5f;
     --stats-box-h3-border: #cceeff;
-
     --main-content-bg: white;
     --main-content-shadow: rgba(0,0,0,0.1);
     --main-content-h2-color: #1e3a5f;
@@ -39,7 +32,6 @@
     --main-content-h3-color: #3b82f6;
     --main-content-h3-border: #e0e0e0;
     --main-content-link-color: #3b82f6;
-
     --toggle-bg-light: #ccc;
     --toggle-bg-dark: #555;
     --toggle-shadow-light: rgba(0,0,0,0.2);
@@ -56,29 +48,24 @@ body.dark-mode {
     --text-color: #e0e0e0;
     --link-color: #8be0ff;
     --link-hover-color: #a0c4ff;
-
     --header-bg: #1a1a1a;
     --header-text-color: #f0f0f0;
     --home-link-color: #e0e0e0;
     --home-link-hover-color: #9fe6b8;
     --footer-bg: #1a1a1a;
     --footer-text-color: #f0f0f0;
-
     --quote-box-bg: #282828;
     --quote-box-border: #6200ea;
     --quote-box-cite-color: #bbb;
-
     --sidebar-bg: #1f1f1f;
     --sidebar-shadow: rgba(0,0,0,0.3);
     --sidebar-h2-color: #9fe6b8;
     --sidebar-h2-border: #333;
     --sidebar-strong-color: #e0e0e0;
-
     --stats-box-bg: #2a2a2a;
     --stats-box-shadow: rgba(0,0,0,0.4);
     --stats-box-h3-color: #9fe6b8;
     --stats-box-h3-border: #444;
-
     --main-content-bg: #1f1f1f;
     --main-content-shadow: rgba(0,0,0,0.3);
     --main-content-h2-color: #9fe6b8;
@@ -110,7 +97,6 @@ a:hover {
     color: var(--link-hover-color);
 }
 
-/* --- HEADER --- */
 .page-header {
     background: var(--header-bg);
     color: var(--header-text-color);
@@ -161,16 +147,15 @@ body.dark-mode .logo-accueil {
 }
 
 .page-header h1 {
-    font-size: 2em; /* Taille ajustée pour correspondre à l'autre page */
+    font-size: 2em; 
     color: var(--header-text-color);
     margin: 0;
     flex: auto;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre ajoutée pour être identique */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
-/* --- BOUTON DARK MODE D'ORIGINE --- */
 #darkModeToggle {
     position: relative;
     width: 70px;
@@ -237,7 +222,6 @@ body.dark-mode #darkModeToggle .icon-dark {
     color: var(--icon-dark-color-active);
 }
 
-/* --- MAIN & CITATION --- */
 main {
     padding-bottom: 20px;
 }
@@ -499,11 +483,9 @@ footer {
     padding: 15px;
     margin-top: 15px;
     border-radius: 8px;
-    
     display: inline-block;
     max-width: 200px;
     vertical-align: top;
-
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -519,7 +501,6 @@ body.dark-mode .pilt-box {
     display: block;
 }
 
-/* --- CLASSE ANTI-FOUC --- */
 .no-transition,
 .no-transition * {
     transition: none !important;
