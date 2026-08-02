@@ -17,6 +17,23 @@
     --mobile-menu-text: white;
 }
 
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #8d9bff;
+    --link-hover-color: #c0caff;
+    --potions-box-bg: rgba(46, 48, 79, 0.8);
+    --potions-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    --potions-name-color: #e0e0e0;
+    --note-text-color: #e0e0e0;
+    --highlight-text-color: #b8c0ff;
+    --section-title-color: #b8c0ff;
+    --section-title-underline: #6a9ac9;
+    --big-title-color: #ffcccc;
+    --mobile-menu-bg: #232946;
+    --mobile-menu-text: #e0e0e0;
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -53,6 +70,10 @@ a:hover {
     transition: background-image 0.5s ease;
 }
 
+body.dark-mode .top-page {
+    background-image: url('../img/bgsombre.png');
+}
+
 .header {
     display: flex;
     align-items: flex-start;
@@ -63,6 +84,68 @@ a:hover {
 .header img.logo {
     width: 150px;
     height: auto;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode-toggle {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #555;
+}
+
+.icon-light, .icon-dark {
+    font-size: 1.8em;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icon-light {
+    left: 10px;
+    color: #ffc107;
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+}
+
+.icon-dark {
+    right: 10px;
+    color: #f8f9fa;
+    transform: translateY(-50%) translateX(30px);
+    opacity: 0;
+}
+
+body.dark-mode .icon-light {
+    transform: translateY(-50%) translateX(-30px);
+    opacity: 0;
+}
+
+body.dark-mode .icon-dark {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
 }
 
 .landing-page {
