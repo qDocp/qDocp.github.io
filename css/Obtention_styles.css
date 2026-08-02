@@ -78,6 +78,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
@@ -85,10 +86,17 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.header-left-column {
+.header-left {
     display: flex;
     align-items: center;
-    gap: 20px;
+    flex: 1; 
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    flex: 1; 
 }
 
 .home-link {
@@ -109,7 +117,6 @@ body {
     height: 40px;
     margin-right: 10px;
     filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
-    /* Transition retirée car trop lourde */
 }
 
 body.dark-mode .logo-accueil {
@@ -120,18 +127,15 @@ body.dark-mode .logo-accueil {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5em;
     color: var(--page-header-text);
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
-    flex-grow: 1;
+    flex: auto;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    transition: color 0.5s ease; /* text-shadow retiré de la transition */
+    transition: color 0.5s ease;
 }
 
 .dark-mode-toggle {
     position: relative;
-    margin-top: 15px;
-    margin-right: auto;
-    margin-left: 0;
     width: 70px;
     height: 40px;
     background-color: #ccc;
@@ -145,6 +149,7 @@ body.dark-mode .logo-accueil {
     justify-content: space-between;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    flex-shrink: 0;
 }
 
 .dark-mode-toggle:hover {
@@ -217,7 +222,6 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    /* Fondu retiré ici car image de fond = gros lag */
 }
 
 .info-box {
@@ -296,7 +300,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     padding: 20px;
     text-align: center;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out; /* Fondus supprimés, seul le survol s'anime */
+    transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -406,21 +410,22 @@ footer p {
     letter-spacing: 0.5px;
 }
 
+/* --- RESPONSIVE MOBILE IDENTIQUE AUX AUTRES PAGES --- */
 @media (max-width: 768px) {
     .page-header {
-        flex-direction: column;
-        text-align: center;
+        flex-wrap: wrap; 
         padding: 1em;
     }
-
-    .header-left-column {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 1em;
+    
+    .header-left, .header-right {
+        flex: 0 0 auto;
     }
 
     .page-header h1 {
+        width: 100%;
+        order: 3; 
         font-size: 2em;
+        margin-top: 10px;
         margin-bottom: 0.5em;
     }
 
@@ -439,12 +444,6 @@ footer p {
     
     .shop-container {
         gap: 30px;
-    }
-
-    .dark-mode-toggle {
-        margin-top: 15px;
-        margin-left: auto;
-        margin-right: auto;
     }
 }
 
@@ -491,7 +490,6 @@ footer p {
 .rarity-icon {
     width: 18px;
     height: 18px;
-    /* Transition retirée car trop lourde avec drop-shadow */
 }
 
 body.dark-mode .rarity-icon {
