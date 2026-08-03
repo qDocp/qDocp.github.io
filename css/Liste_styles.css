@@ -69,7 +69,6 @@ body {
     justify-content: space-between;
     flex-wrap: nowrap;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* On force explicitement la position statique pour que ça scrolle ! */
     position: static !important;
     z-index: 1000;
     transition: background-color 0.5s ease, color 0.5s ease;
@@ -421,7 +420,7 @@ footer p {
     .page-header {
         flex-wrap: wrap; 
         padding: 1em;
-        position: static !important; /* Force la disparition au scroll sur mobile et tablette */
+        position: static !important; 
     }
     .header-left, .header-right {
         flex: 0 0 auto;
@@ -474,9 +473,10 @@ footer p {
     }
 }
 
+/* --- ADAPTATION SPÉCIFIQUE TÉLÉPHONES (2 cartes par ligne) --- */
 @media (max-width: 480px) {
     .page-header {
-        position: static !important; /* Force la disparition au scroll sur très petits écrans */
+        position: static !important; 
     }
     .page-header h1 {
         font-size: 1.5em;
@@ -489,6 +489,43 @@ footer p {
     }
     .container {
         padding: 15px;
+    }
+
+    /* On réduit l'espace entre les cartes */
+    .potions-row {
+        gap: 10px;
+    }
+
+    /* 2 cartes par ligne (50% moins l'espace du gap) */
+    .potions-card-link {
+        width: calc(50% - 5px);
+        min-width: unset;
+        max-width: none;
+        height: 280px; /* On réduit la hauteur de la carte */
+        padding: 10px; /* On réduit l'espace intérieur */
+    }
+
+    /* On rapetisse les éléments à l'intérieur de la carte */
+    .potions-card img {
+        height: 100px; /* Images plus petites */
+        margin-bottom: 5px;
+    }
+
+    .potions-name {
+        font-size: 0.85em; /* Texte plus petit */
+    }
+
+    .rareter {
+        font-size: 0.8em;
+    }
+
+    .rare {
+        font-size: 0.85em;
+    }
+
+    .rare img {
+        width: 15px;
+        height: 15px;
     }
 }
 
