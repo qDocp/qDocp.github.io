@@ -473,7 +473,7 @@ footer p {
     }
 }
 
-/* --- ADAPTATION SPÉCIFIQUE TÉLÉPHONES (Forcé à 2 cartes par ligne) --- */
+/* --- ADAPTATION SPÉCIFIQUE TÉLÉPHONES (Forcé à 2 cartes par ligne en continu) --- */
 @media (max-width: 480px) {
     .page-header {
         position: static !important; 
@@ -491,31 +491,36 @@ footer p {
         padding: 10px;
     }
 
-    /* SOLUTION MAGIQUE : On force une grille stricte à 2 colonnes */
-    .potions-row {
+    /* 1. On transforme le conteneur principal de la catégorie en grille continue */
+    .potions-category {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        margin-bottom: 20px;
     }
 
+    /* 2. On "efface" les lignes (les groupes de 5) pour que les cartes fusionnent */
+    .potions-row {
+        display: contents; /* Cette commande magique fait disparaître la div "row" virtuellement */
+    }
+
+    /* 3. Ajustement de la taille des cartes */
     .potions-card-link {
-        width: 100%; /* La grille gère la largeur toute seule */
-        min-width: 0; /* Annule toutes les limites précédentes */
+        width: 100%; 
+        min-width: 0; 
         max-width: none;
-        height: auto; /* S'adapte au contenu */
+        height: auto; 
         min-height: 240px; 
         padding: 10px;
     }
 
     /* On rapetisse les éléments à l'intérieur de la carte */
     .potions-card img {
-        height: 80px; /* Images encore un peu plus petites pour laisser respirer */
+        height: 80px; 
         margin-bottom: 5px;
     }
 
     .potions-name {
-        font-size: 0.8em; /* Texte plus petit pour éviter de casser la boîte */
+        font-size: 0.8em; 
         margin-bottom: 2px;
     }
 
