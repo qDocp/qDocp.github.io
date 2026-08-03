@@ -69,7 +69,6 @@ body {
     justify-content: space-between;
     flex-wrap: nowrap;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Les attributs sticky et top ont été retirés ici pour scroller normalement */
     z-index: 1000;
     transition: background-color 0.5s ease, color 0.5s ease;
     margin-bottom: 0;
@@ -199,40 +198,43 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     margin: 0 auto;
     box-sizing: border-box;
     align-items: flex-start;
+    /* La position relative permet de guider la sidebar fixe */
+    position: relative; 
 }
 
 .sidebar {
     width: 250px;
-    padding: 20px 0;
+    padding: 30px 20px; /* Plus d'espace en haut et en bas de la boîte */
     background-color: var(--sidebar-bg);
     border-radius: 20px;
     box-shadow: 0 4px 8px var(--sidebar-shadow);
     flex-shrink: 0;
-    position: sticky;
-    top: 30px; /* Ajusté pour que le menu reste en haut de l'écran quand on scroll */
-    height: fit-content;
+    
+    /* Le menu est maintenant fixe à l'écran */
+    position: fixed;
+    top: 50%;
+    left: 30px; /* Aligné avec le padding de la page */
+    transform: translateY(-50%);
+    
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
     z-index: 100;
 }
 
 .category-menu {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .category-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* Ajout d'un gap pour aérer les boutons ! */
+    gap: 15px; 
 }
 
 .category-menu li {
@@ -245,7 +247,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     text-decoration: none;
     color: var(--text-color);
     background-color: var(--category-bg);
-    border-radius: 5px;
+    border-radius: 8px; /* Bordures légèrement plus douces */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     font-size: 1.1em;
     text-align: center;
@@ -278,6 +280,8 @@ body.dark-mode .category-menu a.active {
     padding: 30px;
     text-align: center;
     flex-grow: 1;
+    /* On laisse la place au menu fixe à gauche (250px de menu + 30px de marge + 30px de gap) */
+    margin-left: 310px; 
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -443,8 +447,13 @@ footer p {
         width: 100%;
         position: relative;
         top: 0;
+        left: 0; /* On annule la fixation à gauche sur mobile */
         transform: none; 
         padding: 10px 0;
+    }
+
+    .container {
+        margin-left: 0; /* On annule la marge gauche sur mobile */
     }
 
     .category-menu ul {
