@@ -473,7 +473,7 @@ footer p {
     }
 }
 
-/* --- ADAPTATION SPÉCIFIQUE TÉLÉPHONES (2 cartes par ligne) --- */
+/* --- ADAPTATION SPÉCIFIQUE TÉLÉPHONES (Forcé à 2 cartes par ligne) --- */
 @media (max-width: 480px) {
     .page-header {
         position: static !important; 
@@ -488,39 +488,44 @@ footer p {
         margin-right: 10px;
     }
     .container {
-        padding: 15px;
+        padding: 10px;
     }
 
-    /* On réduit l'espace entre les cartes */
+    /* SOLUTION MAGIQUE : On force une grille stricte à 2 colonnes */
     .potions-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
         gap: 10px;
+        margin-bottom: 20px;
     }
 
-    /* 2 cartes par ligne (50% moins l'espace du gap) */
     .potions-card-link {
-        width: calc(50% - 5px);
-        min-width: unset;
+        width: 100%; /* La grille gère la largeur toute seule */
+        min-width: 0; /* Annule toutes les limites précédentes */
         max-width: none;
-        height: 280px; /* On réduit la hauteur de la carte */
-        padding: 10px; /* On réduit l'espace intérieur */
+        height: auto; /* S'adapte au contenu */
+        min-height: 240px; 
+        padding: 10px;
     }
 
     /* On rapetisse les éléments à l'intérieur de la carte */
     .potions-card img {
-        height: 100px; /* Images plus petites */
+        height: 80px; /* Images encore un peu plus petites pour laisser respirer */
         margin-bottom: 5px;
     }
 
     .potions-name {
-        font-size: 0.85em; /* Texte plus petit */
+        font-size: 0.8em; /* Texte plus petit pour éviter de casser la boîte */
+        margin-bottom: 2px;
     }
 
     .rareter {
-        font-size: 0.8em;
+        font-size: 0.75em;
+        margin-bottom: 2px;
     }
 
     .rare {
-        font-size: 0.85em;
+        font-size: 0.8em;
     }
 
     .rare img {
