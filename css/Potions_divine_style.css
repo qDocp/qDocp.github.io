@@ -41,9 +41,7 @@ body.dark-mode {
     --footer-bg: #1a1a1a;
     --footer-text: #f0f0f0;
     --rarity-display-color: #ffd700;
-    
-    /* AURA BOOSTÉE ICI : Plus grande (10px) et totalement opaque (1) */
-    --rarity-icon-shadow: 0 0 10px rgba(255, 215, 0, 1);
+    --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
 }
 
 body {
