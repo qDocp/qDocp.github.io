@@ -186,6 +186,13 @@ body.dark-mode .dark-mode-toggle .icon-dark {
 }
 
 /* =========================================
+   BOUTONS MOBILE (Cachés sur PC)
+   ========================================= */
+.mobile-sidebar-toggle, .close-sidebar-btn {
+    display: none;
+}
+
+/* =========================================
    CORPS DE LA PAGE POTION
    ========================================= */
 .potion-main-container {
@@ -223,7 +230,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     box-sizing: border-box;
     box-shadow: 0 2px 6px var(--sidebar-shadow);
     flex-shrink: 0; 
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, left 0.4s ease-in-out;
 }
 
 .sidebar h2 {
@@ -265,7 +272,6 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     transition: filter 0.5s ease;
 }
 
-/* L'application de l'ombre à l'icône se fait ici */
 body.dark-mode .rarity-icon {
     filter: drop-shadow(var(--rarity-icon-shadow));
 }
@@ -380,16 +386,15 @@ footer p {
    RESPONSIVE DESIGN (Tablettes & Mobiles)
    ========================================= */
 @media (max-width: 900px) {
+    /* Sur tablette, la barre se met au-dessus normalement */
     .wiki-layout {
         flex-direction: column;
         align-items: center;
     }
-    
     .sidebar {
         width: 100%;
         max-width: 500px; 
     }
-    
     .main-content {
         width: 100%;
     }
@@ -410,10 +415,63 @@ footer p {
         margin-top: 10px;
         margin-bottom: 0.5em;
     }
-
     .quote-box {
         width: 90%;
         padding: 15px;
+    }
+
+    /* ---- APPARITION DU MENU GLISSANT POUR TELEPHONE ---- */
+    .mobile-sidebar-toggle {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: var(--page-header-bg);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-bottom: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+    }
+
+    body.dark-mode .mobile-sidebar-toggle {
+        background-color: #3c405d;
+        color: #fff;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Totalement caché à gauche par défaut */
+        width: 100vw; /* Prend toute la largeur de l'écran */
+        max-width: none;
+        height: 100vh; /* Prend toute la hauteur de l'écran */
+        z-index: 9999; /* Par-dessus tout le reste */
+        border-radius: 0;
+        padding: 50px 20px 20px 20px; /* Espace en haut pour le bouton fermer */
+        overflow-y: auto; /* Permet de descendre dans le menu */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    /* Cette classe est ajoutée par JavaScript quand on clique */
+    .sidebar.open {
+        left: 0; /* Le menu glisse sur l'écran */
+    }
+
+    .close-sidebar-btn {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: transparent;
+        border: none;
+        font-size: 1.5em;
+        color: var(--text-color);
+        font-weight: bold;
+        cursor: pointer;
     }
 }
 
@@ -427,26 +485,21 @@ footer p {
     .logo-accueil {
         margin-right: 10px;
     }
-    
     .potion-main-container {
         padding: 10px;
     }
-    
     .wiki-layout {
         gap: 20px;
         padding: 0; 
     }
-    
-    .sidebar, .main-content {
+    .main-content {
         padding: 15px;
     }
-    
     .toc {
         display: block; 
     }
 }
 
-/* Évite le flash blanc au chargement */
 .no-transition,
 .no-transition * {
     transition: none !important;
