@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (openSidebarBtn && closeSidebarBtn && sidebar) {
         openSidebarBtn.addEventListener('click', () => {
             sidebar.classList.add('open');
-            body.style.overflow = 'hidden'; // Empêche l'arrière-plan de scroller
+            body.style.overflow = 'hidden'; // Empêche le fond de bouger
         });
 
         closeSidebarBtn.addEventListener('click', () => {
             sidebar.classList.remove('open');
-            body.style.overflow = ''; // Réactive le scroll de la page
+            body.style.overflow = ''; // Réactive le scroll normal
         });
     }
 });
