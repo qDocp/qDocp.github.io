@@ -475,15 +475,20 @@ footer p {
         position: absolute;
         top: 15px;
         right: 20px;
-        background: #ff4d4d; 
-        color: white;
-        padding: 8px 15px;
+        background: transparent; /* Fond invisible */
+        color: var(--text-color); /* Prend la couleur du texte (noir ou blanc selon le mode) */
+        padding: 5px;
         border: none;
-        border-radius: 20px;
-        font-size: 1em;
-        font-weight: bold;
+        font-size: 1.8em; /* Plus grand pour être facile à toucher */
+        font-weight: normal;
         cursor: pointer;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        opacity: 0.6; /* Un peu transparent pour être discret */
+        transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .close-sidebar-btn:hover {
+        opacity: 1; /* Devient net quand on appuie dessus */
+        transform: scale(1.1);
     }
 }
 
