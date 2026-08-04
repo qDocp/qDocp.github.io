@@ -41,8 +41,6 @@ body.dark-mode {
     --footer-bg: #1a1a1a;
     --footer-text: #f0f0f0;
     --rarity-display-color: #ffd700;
-    
-    /* TON AURA PERSONNALISÉE */
     --rarity-icon-shadow: 0 0 5px rgba(255, 234, 0, 0.5);
 }
 
@@ -232,7 +230,7 @@ body.dark-mode .dark-mode-toggle .icon-dark {
     box-sizing: border-box;
     box-shadow: 0 2px 6px var(--sidebar-shadow);
     flex-shrink: 0; 
-    transition: background-color 0.5s ease, box-shadow 0.5s ease, left 0.4s ease-in-out;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .sidebar h2 {
@@ -364,7 +362,6 @@ body.dark-mode .media-container {
     display: block; 
 }
 
-
 /* =========================================
    FOOTER
    ========================================= */
@@ -428,13 +425,13 @@ footer p {
         display: block;
         position: fixed;
         bottom: 25px;
-        right: 20px; /* Le bouton flotte en bas à droite */
-        z-index: 9998; /* Reste au dessus du contenu */
+        right: 20px; 
+        z-index: 9998; 
         padding: 12px 20px;
         background-color: #1e3a5f;
         color: white;
         border: 2px solid white;
-        border-radius: 30px; /* Bouton arrondi */
+        border-radius: 30px; 
         font-size: 1em;
         font-weight: bold;
         cursor: pointer;
@@ -448,26 +445,29 @@ footer p {
 
     body.dark-mode .mobile-sidebar-toggle {
         background-color: #3c405d;
-        border-color: #ffd700; /* Rappel divin */
+        border-color: #ffd700; 
     }
 
-    /* ---- MENU GLISSANT PLEIN ÉCRAN ---- */
+    /* ---- MENU GLISSANT PLEIN ÉCRAN (Correction avec Transform) ---- */
     .sidebar {
         position: fixed;
         top: 0;
-        left: -100%; /* Caché par défaut */
-        width: 100vw;
+        left: 0; 
+        transform: translateX(-110%); /* Caché complètement à gauche */
+        width: 100%;
         max-width: none;
-        height: 100vh;
-        z-index: 9999; /* Au dessus de tout, même du bouton flottant */
+        height: 100%;
+        z-index: 9999; 
         border-radius: 0;
-        padding: 60px 20px 20px 20px; /* De la place en haut pour le bouton fermer */
+        padding: 60px 20px 20px 20px; 
         overflow-y: auto; 
+        background-color: var(--sidebar-bg); /* S'assure que le fond est solide */
         box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        transition: transform 0.4s ease-in-out, background-color 0.5s ease; /* Animation super fluide */
     }
 
     .sidebar.open {
-        left: 0; /* Fait glisser le menu sur l'écran */
+        transform: translateX(0); /* Fait glisser le menu sur l'écran */
     }
 
     .close-sidebar-btn {
@@ -475,7 +475,7 @@ footer p {
         position: absolute;
         top: 15px;
         right: 20px;
-        background: #ff4d4d; /* Bouton rouge pour bien voir comment fermer */
+        background: #ff4d4d; 
         color: white;
         padding: 8px 15px;
         border: none;
@@ -506,7 +506,7 @@ footer p {
     }
     .main-content {
         padding: 15px;
-        margin-bottom: 60px; /* Laisse de la place en bas pour ne pas cacher le texte sous le bouton flottant */
+        margin-bottom: 60px; 
     }
     .toc {
         display: block; 

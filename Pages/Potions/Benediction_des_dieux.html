@@ -36,8 +36,8 @@
 
         <div class="wiki-layout">
             <aside class="sidebar" id="potionSidebar">
-                <!-- Bouton de fermeture (visible que sur mobile) -->
-                <button id="closeSidebarBtn" class="close-sidebar-btn">✖ Fermer</button>
+                <!-- NOUVEAU : L'ordre de fermeture est directement dans le HTML -->
+                <button id="closeSidebarBtn" class="close-sidebar-btn" onclick="document.getElementById('potionSidebar').classList.remove('open'); document.body.style.overflow='';">✖ Fermer</button>
                 
                 <h2>Potion de bénédiction des dieux</h2>
                 <img src="../../img/Potions_positives/Potion_de_benediction_des_dieux.png" alt="Potion de bénédiction des dieux">
@@ -91,8 +91,8 @@
         </div>
     </main>
 
-    <!-- NOUVEAU : Bouton flottant pour ouvrir le menu sur mobile (fixé en bas à droite) -->
-    <button id="openSidebarBtn" class="mobile-sidebar-toggle">📊 Stats & Infos</button>
+    <!-- NOUVEAU : L'ordre d'ouverture est directement dans le HTML -->
+    <button id="openSidebarBtn" class="mobile-sidebar-toggle" onclick="document.getElementById('potionSidebar').classList.add('open'); document.body.style.overflow='hidden';">📊 Stats & Infos</button>
 
     <footer>
         <p>🦊-- Wiki de potions L'échoppe de Milo --🦊</p>
